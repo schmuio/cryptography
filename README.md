@@ -1,2 +1,2 @@
 # cryptography
-A developer-friendly high-level library with commonly needed cryptographic operations
+A developer friendly Go library with commonly needed cryptographic operations
