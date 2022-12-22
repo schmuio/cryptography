@@ -19,7 +19,7 @@ We have tried to offer most of the presently considerd industry standard cryptog
 ### <strong> Getting started </strong>
 Install the library
 ```sh
-go get -u "github.com/schmuio/cryptography
+go get github.com/schmuio/cryptography
 ```
 Import it in your code and get going
 ```sh
