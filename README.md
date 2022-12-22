@@ -10,7 +10,7 @@ The science of cryptography is <i>hugely</i> complex and often the worst vulnera
 <hr>
 
 ### <strong> Motivation </strong>
-In our experience working on enterprise software we have repeatedly encountered a gap between the need for developers to perform high level cryptographic operations and the supply of safe and in the meantime easy to use cryptoraphic recipes. Yes, all of it is out there, but getting the entire picture can take weeks, months or years depending on one's inidividual experience with cryptography. We went through this journey developing various enterprise solutions and now want to share our work. We continue to use this library for our present and future proprietory projects.
+In our experience working on enterprise software we have repeatedly encountered a gap between the need for developers to perform high level cryptographic operations and the supply of safe and in the meantime easy to use cryptoraphic recipes. Yes, all of it is out there, but getting the entire picture can take weeks, months or years depending on one's inidividual experience. We went through this journey and now want to share our work. We continue to use this library for our present and future proprietory projects.
 <br>
 
 <hr>
