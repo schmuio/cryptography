@@ -1,8 +1,6 @@
-# &#128273; cryptography
+# &#128273; <strong> cryptography </strong>
 A developer-oriented Go library with commonly needed cryptographic operations.
-
 <br>
-
 <hr style="height: 1px">
 
 ### <strong> Overview </strong>  
