@@ -42,9 +42,10 @@ For the sake of avoiding repetition we assume that in every example snipped one 
 package yourpackage
 
 import (
+    "fmt"
     "otherstuff"
     "morestuff"
-    "github.com/schmuio/cryptograhy"
+    "github.com/schmuio/cryptography"
 )
 ```
 
