@@ -1,6 +1,6 @@
 # &#128273; cryptography
 A developer-oriented Go library with commonly needed cryptographic operations.
-
+<br>
 <hr>
 
 ### <strong> Overview </strong>  
@@ -16,7 +16,7 @@ In our experience working on enterprise software we have repeatedly encountered 
 <hr>
 
 ### <strong> What's in the box </strong>
-We have tried to offer most of the presently considerd industry standard cryptographic algorithms. This includes symmetric encryption, asymmetric encryption, digital signatures, time based one time passwords and multiple utility functions for managing cryptographic keys. This inclides both Go native constructs based on the standard library as well as We intend to keep updating the library with additional algorithms and welcome and recommendations or feature requests.
+We have tried to offer most of the presently considerd industry standard cryptographic algorithms. This includes symmetric encryption, asymmetric encryption, digital signatures, time based one time passwords and multiple utility functions for managing cryptographic keys. This includes both Go native constructs based on the standard library as well as cloud-specific implementations that offer excellent security and key management features. We intend to keep updating the library with additional algorithms and welcome and recommendations or feature requests.
 <br>
 
 <hr>
@@ -44,7 +44,7 @@ ciphertext, err := cryptography.EncryptAes("some-important-plaintext", yourKey)
 <hr>
 
 ### <strong> Convenience and speed </strong>
-We have prioritised developer convenience and ability to inspect inputs and outputs visually so most functions are designed to consume string inputs and to provide string outputs. This means that every now and then there are a few type conversions that in an be-as-fast-as-possible scenario can be avoided. Unless you plan to apply these functions in loops with very high number of operations or are in a the fastest-takes-it-all situatins the performance is more than fine. Put otherwise, if you need to measure performance in milliseconds or hundreds of nanoseconds - you are fine. If a few nanoseconds per operation are an issue - we recommend that you go for lower level implementations.
+We have prioritised developer convenience and ability to inspect inputs and outputs visually so most functions are designed to consume string inputs and to provide string outputs. This means that every now and then there are a few type conversions that in an be-as-fast-as-possible scenario can be avoided. Unless you plan to apply these functions in loops with very high number of operations or are in a the fastest-takes-it-all situations the performance is more than fine. Put otherwise, if you need to measure performance in milliseconds or hundreds of nanoseconds - you are fine. If a few nanoseconds per operation are an issue - we recommend that you go for lower level implementations.
 
 Perhaps meticulous Go developers could notice we have had the frivolty of allowing few underscores avery now and then. Always respectful of convention, we have reckoned this is helping readability.
 
