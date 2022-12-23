@@ -177,6 +177,36 @@ The problem is that SHA1 has been long proven to be fundamentally insecure and i
 <br>
 For our purposes we prefer to use SHA256 because evaluating how safe SHA1 is for TOTP generation is beyond our expertise, nevertheless we do not argue that the latter cannot be safely used in such contexts.
 
+<br>
+<br>
+<strong> List of supported algorithms</strong>
+<br>
+<br>
+AES-GCM - symmetric encryption, native*
+<br>
+AES-GCM - symmetric encryption, via Google Cloud Platform
+<br>
+ChaCha20-Poly1305 - symmetric encryption, native
+<br>
+RSA-OAEP - asymmetric encryption, native
+<br>
+RSA-OAEP - asymmetric encryption, via Google Cloud Platform
+<br>
+RSA-PSS - digital signatures encryption, native
+<br>
+RSA-PSS - digital signatures encryption, via Google Cloud Platform
+<br>
+RFC 6238 - time-based one-time passwords, native
+<br>
+*"native" refers to as locally executable code which does not rely on any external infrastructure
+
+<br>
+<br>
+<strong>Contributing</strong>
+<br>
+<br>
+At present we plan to maintain this library on our own as it is getting shaped by the needs of the projects we are and will be using it for. As time is particularly limited, we prefer to not manage this repo as a particularly dynamic one. Nevertheless, we would warmly welcome any remarks, recommendations, feature requests or contribution proposals which we'll review on an individual basis. We commit to fix any bugs and inconsistencies in due course. Please contact us on schmuio@proton.me on any matter of interest.  
+
 
 <br>
 <br>
