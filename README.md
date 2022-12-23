@@ -167,7 +167,7 @@ if err := nil {
 
 // Render this QR code (bs64 encoded image) on your UI to allow the user to onboard for 2-factor authentication with an app like Authy, Google Authenticatior, etc.
 ```
-<br>
+
 <br>
 <i>Note</i>: TOTPs standardised with <a href="https://www.ietf.org/rfc/rfc6238.txt">RFC6238</a> use SHA1 as an HMAC algorithm and the latter is still in seemingly wide use in TOTP context. At the time of writing (Decemeber, 2022) <a href="https://authy.com/">Authy</a>, <a href="https://googleauthenticator.net/">Google Authenticator</a> and <a href="https://www.microsoft.com/en-us/security/mobile-authenticator-app">Microsoft Authenticator</a> still default to SHA1 and when TOTPs created with SHA256 or SHA512 are passed the latter apps still expect the SHA1-based value. On the other hand others like <a href="https://www.ibm.com/docs/en/sva/9.0.2.1?topic=verify-application">IBM Verify</a> and <a href="https://docs.sophos.com/esg/smsec/help/en-us/esg/Sophos-Mobile-Security/concepts/Authenticator.html">Sophos Authenticator</a> seem to already be supporting SHA256-based TOTPs.
 <br>
