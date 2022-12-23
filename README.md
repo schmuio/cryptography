@@ -116,7 +116,7 @@ plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 ```
 <br>
 
-<i>Note</i>: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see [ [1](https://www.manning.com/books/real-world-cryptography) ] for details). In brief, do not use one key for more than 2<sup>32</sup> encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see [ [7](https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/) ] for an excellent explanation of the problem).
+&#x26A0; Both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see [ [1](https://www.manning.com/books/real-world-cryptography) ] for details). In brief, do not use one key for more than 2<sup>32</sup> encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see [ [7](https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/) ] for an excellent explanation of the problem).
 <br>
 
 #### Example 2 - Asymmetric Encryption
@@ -142,7 +142,7 @@ Decrypt:
 plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 ```
  
- <i>Note</i>: RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found in [ [5](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/) ]. If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
+&#x26A0; RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found in [ [5](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/) ]. If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
 <br>
 
 #### Example 3 - Time based one-time passwords
@@ -195,7 +195,7 @@ if err := nil {
 ```
 
 <br>
-<i>Note</i>: TOTPs standardised with <a href="https://www.ietf.org/rfc/rfc6238.txt">RFC6238</a> use SHA1 as an HMAC algorithm and the latter is still in seemingly wide use in TOTP contexts. At the time of writing (Decemeber, 2022) <a href="https://authy.com/">Authy</a>, <a href="https://googleauthenticator.net/">Google Authenticator</a> and <a href="https://www.microsoft.com/en-us/security/mobile-authenticator-app">Microsoft Authenticator</a> still default to SHA1 and when TOTPs created with SHA256 or SHA512 are passed the latter apps still expect the SHA1-based value. On the other hand others like <a href="https://www.ibm.com/docs/en/sva/9.0.2.1?topic=verify-application">IBM Verify</a> and <a href="https://docs.sophos.com/esg/smsec/help/en-us/esg/Sophos-Mobile-Security/concepts/Authenticator.html">Sophos Authenticator</a> seem to already be supporting SHA256-based TOTPs.
+&#x26A0; TOTPs standardised with <a href="https://www.ietf.org/rfc/rfc6238.txt">RFC6238</a> use SHA1 as an HMAC algorithm and the latter is still in seemingly wide use in TOTP contexts. At the time of writing (Decemeber, 2022) <a href="https://authy.com/">Authy</a>, <a href="https://googleauthenticator.net/">Google Authenticator</a> and <a href="https://www.microsoft.com/en-us/security/mobile-authenticator-app">Microsoft Authenticator</a> still default to SHA1 and when TOTPs created with SHA256 or SHA512 are passed the latter apps still expect the SHA1-based value. On the other hand others like <a href="https://www.ibm.com/docs/en/sva/9.0.2.1?topic=verify-application">IBM Verify</a> and <a href="https://docs.sophos.com/esg/smsec/help/en-us/esg/Sophos-Mobile-Security/concepts/Authenticator.html">Sophos Authenticator</a> seem to already be supporting SHA256-based TOTPs.
 <br>
 <br>
 The problem is that for long time SHA1 has been proven to be fundamentally insecure and is no longer recommended by NIST [2], and evidence has been growing it is even more flawed with respect to collision resistance than previously thought [<a href="https://duo.com/decipher/sha-1-fully-and-practically-broken-by-new-collision" target="_blank"> 3 </a>], [<a href="https://eprint.iacr.org/2020/014.pdf" target="_blank"> 4 </a>]. However, reportedly it has been "relatively safe" in other contexts [<a href="https://eprint.iacr.org/2020/014.pdf" target="_blank"> 4 </a>]. For example, in TOTP generation collision resitance is not a required property as well as only a small 6-digit part of the whole hash is used so that the generic collision attacks do not seem to be particularlly applicable.
