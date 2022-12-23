@@ -90,7 +90,7 @@ plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 ```
 <br>
 
-<i>Note</i>: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see _Wong, D.(2021).Real-World Cryptography.Manning Publications_ for details). In brief, do not use one key for more than 2^32 encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see _https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/_ for an excellent explanation of the problem).
+<i>Note</i>: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see _Wong, D.(2021).Real-World Cryptography.Manning Publications_ for details). In brief, do not use one key for more than 2^32 encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see this [post](https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/) for an excellent explanation of the problem).
 
 <br>
 <strong> Example 2: Asymmetric Encryption </strong>
@@ -121,7 +121,7 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 <br>
 <strong> Example 3: Time based one-time passwords </strong>
 <br>
-TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently (see [details](https://www.ietf.org/rfc/rfc6238.txt)). The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
+TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently, see details [here](https://www.ietf.org/rfc/rfc6238.txt). The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
 
 
 First step: create a TotpManager instance with all the necessary data:
