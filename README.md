@@ -1,8 +1,8 @@
-# &#128273; <strong> cryptography </strong>
+#&#128273; <strong> cryptography </strong>
 A developer-oriented Go library with commonly applied cryptographic operations.
 <br>
 
-### <strong> Contents </strong>
+###<strong> Contents </strong>
 
 - [Cryptography](#cryptography)
 - [Overview](#overview)
@@ -15,7 +15,7 @@ A developer-oriented Go library with commonly applied cryptographic operations.
 - [Contributing](#contributing)
 - [References](#references)
 
-### <strong> Overview </strong>
+###<strong> Overview </strong>
 A compilation of trustworthy lower level implementations wrapped as developer-friendly higher level API that is safe, has everything in one place and is easy to get up and running. 
 <br>
 
