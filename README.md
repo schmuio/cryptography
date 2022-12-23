@@ -122,9 +122,8 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 <br>
 TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently. The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
 
-<br> TOTP workflow:
 
-Create a TotpManager instance with all the necessary data:
+First step: create a TotpManager instance with all the necessary data:
 ```sh
  secret, err := cryptography.Key512b() // Note: the secret must be of this size
  if err := nil {
@@ -140,3 +139,28 @@ Create a TotpManager instance with all the necessary data:
 	}
 ```
 
+Generate a TOTP:
+```sh
+totp, err := tm.TOTP()  // The result is a string of 6 decimal digits like "123456"
+if err := nil {
+    // error handling logic
+}
+```
+
+Validate a TOTP:
+```sh
+isValid, err := tm.Validate(totp)
+if err := nil {
+    // error handling logic
+}
+```
+
+Generate QR code:
+```sh
+qrCodeBase64, err := tm.QrCode()
+if err := nil {
+    // error handling logic
+}
+
+// Render this QrCode (bs64 encoded image) on your UI to allow the user to onboard for 2-factor authentication with an app like Authy, Google Authenticatior, etc.
+```
