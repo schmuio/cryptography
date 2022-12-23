@@ -30,7 +30,7 @@ import (
 )
 yourKey, err := cryptography.Key256b()
 if err != nil {
-    // Do something about it
+    // error handling logic
 }
 ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
 ...
@@ -50,7 +50,8 @@ import (
 ...
 ```
 <br>
-##### <strong> Symmetric Encryption </strong>
+<strong> Symmetric Encryption </strong>
+<br>
 Symmetric encryption algorithms use the same key to encrypt the plaintext and decrypt the respective ciphertext. The library offers the two most widely used algorithms for authenticated symmetric encryption - AES-GCM and ChaCha20-poly1305.
 <br>
 
