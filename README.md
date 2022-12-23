@@ -32,7 +32,7 @@ yourKey, err := cryptography.Key256b()
 if err != nil {
     // Do something about it
 }
-ciphertext, err := cryptography.EncryptAes("some-important-plaintext", yourKey)
+ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
 ...
 ```
 
@@ -49,4 +49,22 @@ import (
 )
 ...
 ```
+<br>
+##### <strong> Symmetric Encryption </strong>
+Symmetric encryption algorithms use the same key to encrypt the plaintext and decrypt the respective ciphertext. The library offers the two most widely used algorithms for authenticated symmetric encryption - AES-GCM and ChaCha20-poly1305.
+<br>
+```sh
+// AES-GCM encryption-decryption
+yourKey, err := cryptography.Key256b()  // Note: alternatively Key128b() or Key512b() can be used
+if err != nil {
+    // Do something about it
+}
+// Encryption
+ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
+...
 
+// Decryption
+plaintext, err := cryptography.DecryptAesGcm(ciphertext, yourKey)
+...
+
+```
