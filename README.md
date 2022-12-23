@@ -121,7 +121,8 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 <br>
 <strong> Example 3: Time based one-time passwords </strong>
 <br>
-TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently, see details <a href="https://www.ietf.org/rfc/rfc6238.txt">here</a>. The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
+TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently, see details here <a href="https://www.ietf.org/rfc/rfc6238.txt">RFC6238</a>. The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
+<br>
 <br>
 
 Initial step: create a TotpManager instance with all the necessary data:
@@ -166,3 +167,20 @@ if err := nil {
 
 // Render this QR code (bs64 encoded image) on your UI to allow the user to onboard for 2-factor authentication with an app like Authy, Google Authenticatior, etc.
 ```
+<br>
+<br>
+<i>Note</i>: The algorithm standardised with <a href="https://www.ietf.org/rfc/rfc6238.txt">RFC6238</a> uses SHA1 as an HMAC algorithm and the latter is still in very wide use when it comes to TOTPs. At the time of writing (Decemeber, 2022) <a href="https://authy.com/">Authy</a>, <a href="https://googleauthenticator.net/">Google Authenticator</a> and <a href="https://www.microsoft.com/en-us/security/mobile-authenticator-app">Microsoft Authenticator</a> still default to SHA1 and when TOTPs created with SHA256 or SHA512 are passed the latter apps still expect the SHA1-based value. On the other hand others like <a href="ttps://www.ibm.com/docs/en/sva/9.0.2.1?topic=verify-application">IBM Verify</a> and <a href="https://docs.sophos.com/esg/smsec/help/en-us/esg/Sophos-Mobile-Security/concepts/Authenticator.html">Sophos Authenticator</a> seem to already be supporting SHA256-based TOTPs.
+<br>
+<br>
+The problem is that SHA1 has been long proven to be fundamentally insecure and is no longer recommended by NIST [2], and evidence has been growing it is even more flawed with respect to collision resistance than previously thought [3,4]. However, for HMAC SHA-1 has been admittedly "relatively safe" [4]. Also, in TOTP generation collision resitance is not a required property as well as only a small 6-digit part of the whole hash is used so that the generic collision attacks do not seem to be particularlly applicable.
+<br>
+<br>
+For our purposes we would prefer to use SHA256 because evaluating how safe SHA1 is is beyond our expertise, yet we do not argue the latter cannot be safely used for TOTP generation purposes.
+
+
+
+<strong>References</strong>
+[1] Wong
+[2] Serious
+[3] https://duo.com/decipher/sha-1-fully-and-practically-broken-by-new-collision
+[4] https://eprint.iacr.org/2020/014.pdf
