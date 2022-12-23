@@ -162,5 +162,5 @@ if err := nil {
     // error handling logic
 }
 
-// Render this QrCode (bs64 encoded image) on your UI to allow the user to onboard for 2-factor authentication with an app like Authy, Google Authenticatior, etc.
+// Render this QR code (bs64 encoded image) on your UI to allow the user to onboard for 2-factor authentication with an app like Authy, Google Authenticatior, etc.
 ```
