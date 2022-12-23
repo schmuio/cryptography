@@ -123,7 +123,9 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 <br>
 TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently, see details <a href="https://www.ietf.org/rfc/rfc6238.txt">here</a>. The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
 <br>
+
 Initial step: create a TotpManager instance with all the necessary data:
+
 ```sh
  secret, err := cryptography.Key512b() // Note: the secret must be of this size
  if err := nil {
