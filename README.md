@@ -5,7 +5,6 @@ An application developer-oriented Go library with commonly applied cryptographic
 
 ## Contents 
 
-- [Cryptography](#cryptography)
 - [Overview](#overview)
 - [What's in the box](#motivation)
 - [Motivation](#motivation)
