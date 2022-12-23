@@ -3,7 +3,6 @@ A developer-oriented Go library with commonly applied cryptographic operations.
 <br>
 
 ### <strong> Contents </strong>
-<br>
 
 - [Cryptography](#cryptography)
 - [Overview](#overview)
