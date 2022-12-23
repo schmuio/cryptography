@@ -21,7 +21,7 @@ Install the library:
 ```sh
 go get github.com/schmuio/cryptography
 ```
-Import it in your code and get going:
+Import it in your code and and you are ready to go:
 ```sh
 package yourpackage
 
