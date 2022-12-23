@@ -1,8 +1,8 @@
-#&#128273; <strong> cryptography </strong>
+# &#128273; cryptography
 A developer-oriented Go library with commonly applied cryptographic operations.
 <br>
 
-###<strong> Contents </strong>
+## Contents 
 
 - [Cryptography](#cryptography)
 - [Overview](#overview)
@@ -15,15 +15,15 @@ A developer-oriented Go library with commonly applied cryptographic operations.
 - [Contributing](#contributing)
 - [References](#references)
 
-###<strong> Overview </strong>
+## Overview
 A compilation of trustworthy lower level implementations wrapped as developer-friendly higher level API that is safe, has everything in one place and is easy to get up and running. 
 <br>
 
-### <strong> Motivation </strong>
+## Motivation
 In our experience working on enterprise software we have repeatedly encountered a gap between the need for developers to perform high level cryptographic operations and the supply of safe and in the meantime easy to use cryptoraphic recipes. Yes, all of it is out there, but getting the entire picture can take weeks, months or years depending on one's inidividual experience. We went through this journey and now would like to share our work. We will continue to use this library for our present and future proprietary projects.
 <br>
 
-### <strong> What's in the box </strong>
+### What's in the box
 We have tried to cover a meaningful variety of cryptographic algorithms which are presently considered industry standard. There are functions for symmetric encryption, asymmetric encryption, digital signatures, time based one time passwords and multiple utilities for management of cryptographic keys. One can find both Go native constructs based on the standard crypto library as well as cloud-specific implementations that offer excellent security and key management features. We intend to keep updating the library with additional algorithms and welcome recommendations or feature requests.
 <br>
 
