@@ -17,6 +17,7 @@ A developer-oriented Go library with commonly applied cryptographic operations.
 - [References](#references)
 
 <br>
+
 ## Overview
 A compilation of trustworthy lower level implementations wrapped as developer-friendly higher level API that is safe, has everything in one place and is easy to get up and running. 
 <br>
@@ -67,7 +68,9 @@ import (
 )
 ```
 <br>
+
 ### Example 1: Symmetric Encryption
+
 <br>
 Symmetric encryption algorithms use the same key to encrypt the plaintext and decrypt the respective ciphertext. The library offers the two most widely used algorithms for authenticated symmetric encryption - <strong>AES-GCM</strong> and <strong>ChaCha20-Poly1305</strong>.
 <br><br>
@@ -113,7 +116,9 @@ plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 <i>Note</i>: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see [1](https://www.manning.com/books/real-world-cryptography) for details). In brief, do not use one key for more than 2^32 encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see this [7](https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/) for an excellent explanation of the problem).
 
 <br>
+
 ### Example 2: Asymmetric Encryption
+
 Asymmetric encryption algorithms use one key (referred to as 'public key') to encrypt data and another one (referred to as 'private key') to decrypt them. This is particularly useful in scenarios where many parties should be able to encrypt certain information but there is only one party that is to be allowed to decrypt it. Make sure the private key is <i> always </i> stored securely and do not share it. You can share the public key freely and do not need to treat it as a secret. The library implements the ubiquitous <strong>RSA-OAEP</strong> algorithm for asymmetric encryption/decryption.
 <br>
 <br>
@@ -139,7 +144,9 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
  
 
 <br>
+
 ### Example 3: Time based one-time passwords
+
 <br>
 TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently, see details here <a href="https://www.ietf.org/rfc/rfc6238.txt">RFC6238</a>. The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
 <br>
@@ -199,7 +206,9 @@ For our purposes we prefer to use SHA256 because evaluating how safe SHA1 is for
 
 <br>
 <br>
+
 ## Supported Algorithms
+
 <br>
 <br>
 AES-GCM - symmetric encryption, native*
@@ -222,7 +231,9 @@ RFC 6238 - time-based one-time passwords, native
 
 <br>
 <br>
+
 ## Contributing
+
 <br>
 <br>
 At present we plan to maintain this library on our own as it is getting shaped by the needs of the projects we are and will be using it for. As time is particularly limited, we prefer to not manage this repo as a particularly dynamic one. Nevertheless, we would warmly welcome any remarks, recommendations, feature requests or contribution proposals which we'll review on an individual basis. We commit to fix any bugs and inconsistencies in due course. Please contact us on schmuio@proton.me on any matter of interest.  
