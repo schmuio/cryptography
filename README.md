@@ -29,7 +29,7 @@ A compilation of trustworthy lower level implementations wrapped as developer-fr
 <br>
 
 ## Motivation
-In our experience with enterprise software we have repeatedly encountered a gap between the the developers' need to apply cryptographic operations and the supply of safe and in the meantime easy to use cryptoraphic recipes. Yes, all of it is out there, but getting the entire picture can take weeks, months or years depending on one's inidividual experience. We went through this journey and now would like to share our work. We intent to continue to use this library for our present and future proprietary projects.
+In our experience with enterprise software we have repeatedly encountered a gap between the the developers' need to apply cryptographic operations and the supply of safe and in the meantime easy to use cryptoraphic recipes. Yes, all of it is out there, but getting the entire picture together can take weeks, months or years depending on one's inidividual experience. We went through this journey and now would like to share our work. We intent to continue to use this library for our present and future proprietary projects.
 <br>
 <br>
 
