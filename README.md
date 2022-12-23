@@ -84,6 +84,7 @@ ciphertext, err := cryptography.EncryptChaCha20("some-important-plaintext", your
 ```
 
 Decrypt:
+
 ```sh
 plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 ```
