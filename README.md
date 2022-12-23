@@ -73,8 +73,6 @@ import (
 ```
 
 #### Example 1 - Symmetric Encryption
-
-<br>
 Symmetric encryption algorithms use the same key to encrypt the plaintext and decrypt the respective ciphertext. The library offers the two most widely used algorithms for authenticated symmetric encryption - <strong>AES-GCM</strong> and <strong>ChaCha20-Poly1305</strong>.
 <br>
 
