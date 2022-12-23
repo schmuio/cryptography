@@ -37,7 +37,7 @@ ciphertext, err := cryptography.EncryptAes("some-important-plaintext", yourKey)
 ```
 
 ### <strong> Convenience and speed </strong>
-We have prioritised developer convenience and ability to inspect inputs and outputs visually so most functions are designed to consume string inputs and to provide string outputs. This means that every now and then there are a few type conversions that in an be-as-fast-as-possible scenario can be avoided. Unless you plan to apply these functions in loops with very high number of iterations or are in a the fastest-takes-it-all situations the performance is more than fine. Put otherwise, if you need to measure performance in milliseconds or hundreds of nanoseconds - you are fine. If a few nanoseconds per operation are an issue - we recommend that you go for lower level implementations.
+We have prioritised developer convenience and ability to inspect inputs and outputs visually so most functions are designed to consume string inputs and to provide string outputs. This means that every now and then there are a few type conversions that in aa _be-as-fast-as-possible_ scenario can be avoided. Unless you plan to apply these functions in loops with very high number of iterations or are in a the _fastest-takes-it-all_ situations the performance is more than fine. Put otherwise, if you need to measure performance in milliseconds or hundreds of nanoseconds - you are fine. If a few nanoseconds per operation are an issue - we recommend that you go for lower level implementations.
 
 Perhaps meticulous Go developers could notice we have had the frivolty of allowing few underscores avery now and then. Always respectful of convention, we have reckoned this is helping readability.
 
