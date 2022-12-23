@@ -7,7 +7,7 @@ A developer-oriented Go library with commonly applied cryptographic operations.
 
 - [Cryptography](#cryptography)
 - [Overview](#overview)
-- [What's in the box](#in-the-box)
+- [What's in the box](#motivation)
 - [Motivation](#motivation)
 - [Getting Started](#getting-started)
 - [Performance](#performance)
