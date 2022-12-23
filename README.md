@@ -63,7 +63,7 @@ We have prioritised developer convenience and ability to inspect inputs and outp
 <br>
 
 ## Examples
-For the sake of avoiding repetition we assume that in every example snippet one has already imported the module via adding the following to the code:
+For the sake of avoiding repetition we assume that in every example snippet one has already imported the module via adding the following to their code:
 ```sh
 package yourpackage
 
