@@ -58,8 +58,11 @@ Create a key:
 ```sh
 yourKey, err := cryptography.Key256b()  // Note: alternatively Key128b() or Key512b() can be used
 ```
+
 <br>
+
 Encrypt:
+
 ```sh
 ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
 ```
