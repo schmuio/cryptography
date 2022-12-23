@@ -114,6 +114,6 @@ Decrypt:
 plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 ```
  
- <i>Note</i>: RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc. (details can be found (here)[https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/] )
+ <i>Note</i>: RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found (here)[https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/] .
  
 
