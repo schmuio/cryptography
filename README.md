@@ -4,16 +4,16 @@ A developer-oriented Go library with commonly applied cryptographic operations.
 
 ### <strong> Contents </strong>
 <br>
--[Cryptography](#cryptography)
--[Overview](#overview)
--[What's in the box](#what's-in-the-box)
--[Motivation](#motivation)
--[Getting Started](#getting-started)
--[Performance](#performance)
--[Examples](#examples)
--[Supported Algorithms](#supported-algorithms)
--[Contributing](#contributing)
--[References](#references)
+- [Cryptography](#cryptography)
+- [Overview](#overview)
+- [What's in the box](#what's-in-the-box)
+- [Motivation](#motivation)
+- [Getting Started](#getting-started)
+- [Performance](#performance)
+- [Examples](#examples)
+- [Supported Algorithms](#supported-algorithms)
+- [Contributing](#contributing)
+- [References](#references)
 
 ### <strong> Overview </strong>
 A compilation of trustworthy lower level implementations wrapped as developer-friendly higher level API that is safe, has everything in one place and is easy to get up and running. 
