@@ -115,14 +115,13 @@ Decrypt:
 plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 ```
  
- <i>Note</i>: RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found [here](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/) . If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
+ <i>Note</i>: RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found [here](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/). If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
  
 
 <br>
 <strong> Example 3: Time based one-time passwords </strong>
 <br>
-TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently, see details 
-[here](https://www.ietf.org/rfc/rfc6238.txt). The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
+TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently, see details [here](https://www.ietf.org/rfc/rfc6238.txt). The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
 
 
 First step: create a TotpManager instance with all the necessary data:
