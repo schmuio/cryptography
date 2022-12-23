@@ -12,6 +12,11 @@ A developer-oriented Go library with commonly applied cryptographic operations.
 - [Getting Started](#getting-started)
 - [Performance](#performance)
 - [Examples](#examples)
+  - [Symmetric Encryption](#example-1)
+    -[AES-GCM](#aes-gcm)
+    -[ChaCha20-Poly1305](#chacha20-poly1305)
+  - [Asymmetric Encryption(#example-2)
+  - [Time Based One Time Passwords](#example-3)
 - [Supported Algorithms](#supported-algorithms)
 - [Contributing](#contributing)
 - [References](#references)
@@ -67,13 +72,12 @@ import (
     "github.com/schmuio/cryptography"
 )
 ```
-<br>
 
 ### Example 1: Symmetric Encryption
 
 <br>
 Symmetric encryption algorithms use the same key to encrypt the plaintext and decrypt the respective ciphertext. The library offers the two most widely used algorithms for authenticated symmetric encryption - <strong>AES-GCM</strong> and <strong>ChaCha20-Poly1305</strong>.
-<br><br>
+<br>
 
 ##### Example AES-GCM
 
@@ -92,8 +96,6 @@ Decrypt:
 ```sh
 plaintext, err := cryptography.DecryptAesGcm(ciphertext, yourKey)
 ```
-
-<br>
 
 ##### Example ChaCha20-Poly1305
 
@@ -117,7 +119,6 @@ plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 <br>
 
 <i>Note</i>: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see [1](https://www.manning.com/books/real-world-cryptography) for details). In brief, do not use one key for more than 2^32 encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see this [7](https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/) for an excellent explanation of the problem).
-
 <br>
 
 ### Example 2: Asymmetric Encryption
@@ -144,7 +145,6 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 ```
  
  <i>Note</i>: RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found in [5](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/). If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
- 
 <br>
 
 ### Example 3: Time based one-time passwords
