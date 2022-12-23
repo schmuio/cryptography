@@ -33,7 +33,6 @@ if err != nil {
     // error handling logic
 }
 ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
-...
 ```
 
 ### <strong> Performance and convenience </strong>
@@ -47,20 +46,19 @@ package yourpackage
 import (
     "github.com/schmuio/cryptography"
 )
-...
 ```
 <br>
 <strong> Symmetric Encryption </strong>
 <br>
 Symmetric encryption algorithms use the same key to encrypt the plaintext and decrypt the respective ciphertext. The library offers the two most widely used algorithms for authenticated symmetric encryption - AES-GCM and ChaCha20-poly1305.
-<br>
+<br><br>
 
+AES-GCM algorithm
 Create a key:
 ```sh
 yourKey, err := cryptography.Key256b()  // Note: alternatively Key128b() or Key512b() can be used
 ```
 <br>
-
 Encrypt:
 ```sh
 ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
