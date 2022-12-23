@@ -207,7 +207,6 @@ The problem is that SHA1 has been long proven to be fundamentally insecure and i
 For our purposes we prefer to use SHA256 because evaluating how safe SHA1 is for TOTP generation is beyond our expertise, nevertheless we do not argue that the latter cannot be safely used in such contexts.
 
 <br>
-<br>
 
 ## Supported Algorithms
 
