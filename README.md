@@ -144,7 +144,6 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 ```
  
  <i>Note</i>: RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found in [5](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/). If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
-<br>
 
 #### Example 3 - Time based one-time passwords
 
@@ -206,6 +205,7 @@ The problem is that SHA1 has been long proven to be fundamentally insecure and i
 For our purposes we prefer to use SHA256 because evaluating how safe SHA1 is for TOTP generation is beyond our expertise, nevertheless we do not argue that the latter cannot be safely used in such contexts.
 
 <br>
+<br>
 
 ## Supported Algorithms
 
@@ -228,13 +228,13 @@ RFC 6238 - time-based one-time passwords, native
 *<i>native</i> refers to as locally executable code which does not rely on any external infrastructure
 
 <br>
-<br>
+ 
 
 ## Contributing
 
 At present we plan to maintain this library on our own as it is getting shaped by the needs of the projects we are and will be using it for. As time is particularly limited, we prefer to not manage this repo as a particularly dynamic one. Nevertheless, we would warmly welcome any remarks, recommendations, feature requests or contribution proposals which we'll review on an individual basis. We commit to fix any bugs and inconsistencies in due course. Please contact us on schmuio@proton.me on any matter of interest.  
 <br>
-<br>
+ 
 
 ## References
 
