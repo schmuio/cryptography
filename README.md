@@ -53,7 +53,7 @@ import (
 Symmetric encryption algorithms use the same key to encrypt the plaintext and decrypt the respective ciphertext. The library offers the two most widely used algorithms for authenticated symmetric encryption - AES-GCM and ChaCha20-Poly1305.
 <br><br>
 
-In case of the AES-GCM algorithm: <br><br>
+<i>In case of the AES-GCM algorithm:</i> <br><br>
 Create a key:
 ```sh
 yourKey, err := cryptography.Key256b()  // Note: alternatively Key128b() or Key512b() can be used
@@ -71,7 +71,7 @@ plaintext, err := cryptography.DecryptAesGcm(ciphertext, yourKey)
 ```
 
 <br>
-In case of the ChaCha20-Poly1305 algorithm: <br><br>
+<i>In case of the ChaCha20-Poly1305 algorithm:</i> <br><br>
 Create a key:
 ```sh
 yourKey, err := cryptography.KeyChaCha20()
