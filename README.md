@@ -153,7 +153,7 @@ TOTPs are a highly popular method for adding extra security, e.g. in multi-facto
 Initial step: create a TotpManager instance with all the necessary data:
 
 ```sh
- secret, err := cryptography.Key512b() // Note: the secret must be of this size
+ secret, err := cryptography.Key512b() // Note: the secret must be of 64-byte size
  if err := nil {
     // error handling logic
  }
