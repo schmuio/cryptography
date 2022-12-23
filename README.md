@@ -180,7 +180,15 @@ For our purposes we would prefer to use SHA256 because evaluating how safe SHA1 
 
 
 <strong>References</strong>
+<br>
+<br>
 [1] Wong
+<br>
+<br>
 [2] Serious
+<br>
+<br>
 [3] https://duo.com/decipher/sha-1-fully-and-practically-broken-by-new-collision
+<br>
+<br>
 [4] https://eprint.iacr.org/2020/014.pdf
