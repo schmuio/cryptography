@@ -21,7 +21,6 @@ A developer-oriented Go library with commonly applied cryptographic operations.
 - [Contributing](#contributing)
 - [References](#references)
 
-<br>
 
 ## Overview
 A compilation of trustworthy lower level implementations wrapped as developer-friendly higher level API that is safe, has everything in one place and is easy to get up and running. 
