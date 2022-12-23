@@ -17,11 +17,11 @@ We have tried to offer most of the presently considerd industry standard cryptog
 
 
 ### <strong> Getting started </strong>
-Install the library
+Install the library:
 ```sh
 go get github.com/schmuio/cryptography
 ```
-Import it in your code and get going
+Import it in your code and get going:
 ```sh
 package yourpackage
 
