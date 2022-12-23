@@ -115,7 +115,7 @@ plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 ```
 <br>
 
-<i>Note</i>: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see [1](https://www.manning.com/books/real-world-cryptography) for details). In brief, do not use one key for more than 2^32 encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see this [7](https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/) for an excellent explanation of the problem).
+<i>Note</i>: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see [ [1](https://www.manning.com/books/real-world-cryptography) ] for details). In brief, do not use one key for more than 2^32 encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see this [ [7](https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/) for an excellent explanation of the problem) ].
 <br>
 
 #### Example 2 - Asymmetric Encryption
