@@ -48,7 +48,7 @@ import (
 )
 ```
 <br>
-<strong> Symmetric Encryption </strong>
+<strong> Example 1: Symmetric Encryption </strong>
 <br>
 Symmetric encryption algorithms use the same key to encrypt the plaintext and decrypt the respective ciphertext. The library offers the two most widely used algorithms for authenticated symmetric encryption - <strong>AES-GCM</strong> and <strong>ChaCha20-Poly1305</strong>.
 <br><br>
@@ -92,3 +92,7 @@ plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 <br>
 
 <i>Note</i>: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see _Wong, D.(2021).Real-World Cryptography.Manning Publications_ for details). In brief, do not use one key for more than 2^32 encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see _https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/_ for an excellent explanation of the problem).
+
+<br>
+<strong> Example 2: Asymmetric Encryption </strong>
+<br>
