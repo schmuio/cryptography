@@ -117,3 +117,26 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
  <i>Note</i>: RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found [here](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/).
  
 
+<br>
+<strong> Example 3: Time based one-time passwords </strong>
+<br>
+TOTPs are highly prevalent method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties get the same code independently. The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
+
+<br> TOTP workflow:
+
+Create a TotpManager instance with all the necessary data:
+```sh
+ secret, err := cryptography.Key512b() // Note: the secret must be of this size
+ if err := nil {
+    // error handling logic
+ }
+
+ tm := cryptography.TotpManager{
+		Issuer:      "yourOrganization",
+		AccountName: "yourUserEmail@yourOrganization.com",
+		Algorithm:   "SHA1",         // Or SHA256, SHA512
+		Period:      30,             // The default period is 30s
+		Secret:      []byte(secret), // Use different secret per every client
+	}
+```
+
