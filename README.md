@@ -75,7 +75,8 @@ import (
 Symmetric encryption algorithms use the same key to encrypt the plaintext and decrypt the respective ciphertext. The library offers the two most widely used algorithms for authenticated symmetric encryption - <strong>AES-GCM</strong> and <strong>ChaCha20-Poly1305</strong>.
 <br><br>
 
-<i>In case of the AES-GCM algorithm:</i> <br><br>
+##### Example AES-GCM
+
 Create a key:
 ```sh
 yourKey, err := cryptography.Key256b()  // Note: alternatively Key128b() or Key512b() can be used
@@ -93,7 +94,9 @@ plaintext, err := cryptography.DecryptAesGcm(ciphertext, yourKey)
 ```
 
 <br>
-<i>In case of the ChaCha20-Poly1305 algorithm:</i> <br><br>
+
+##### Example ChaCha20-Poly1305
+
 Create a key:
 
 ```sh
@@ -142,7 +145,6 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
  
  <i>Note</i>: RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found in [5](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/). If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
  
-
 <br>
 
 ### Example 3: Time based one-time passwords
