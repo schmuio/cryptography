@@ -42,7 +42,7 @@ We have prioritised developer convenience and ability to inspect inputs and outp
 Perhaps meticulous Go developers could notice we have had the liberty of allowing few underscores every now and then. Always respectful of convention, we have reckoned this is helping readability.
 
 ### <strong> Examples </strong>
-For the sake of avoiding repetition we assume that in every example snipped one has already imported the module via adding the following to the code:
+For the sake of avoiding repetition we assume that in every example snippet one has already imported the module via adding the following to the code:
 ```sh
 package yourpackage
 
