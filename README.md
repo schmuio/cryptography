@@ -1,4 +1,4 @@
-# &#128273; cryptography
+# &#128273; cryptographer
 An application developer-oriented Go library with commonly applied cryptographic operations.
 <br>
 <br>
@@ -41,20 +41,20 @@ We have tried to cover a meaningful variety of cryptographic algorithms which ar
 ## Getting started
 Install the library:
 ```sh
-go get github.com/schmuio/cryptography
+go get github.com/schmuio/cryptography/cryptographer
 ```
 Import it in your code and and you are ready to go:
 ```sh
 package yourpackage
 
 import (
-    "github.com/schmuio/cryptography"
+    "github.com/schmuio/cryptography/cryptographer"
 )
 yourKey, err := cryptography.Key256b()
 if err != nil {
     // error handling logic
 }
-ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
+ciphertext, err := cryptographer.EncryptAesGcm("some-important-plaintext", yourKey)
 ```
 <br>
 
@@ -69,7 +69,7 @@ For the sake of avoiding repetition we assume that in every example snippet one 
 package yourpackage
 
 import (
-    "github.com/schmuio/cryptography"
+    "github.com/schmuio/cryptography/cryptographer"
 )
 ```
 
@@ -81,18 +81,18 @@ Symmetric encryption algorithms use the same key to encrypt the plaintext and de
 
 Create a key:
 ```sh
-yourKey, err := cryptography.Key256b()  // Note: alternatively Key128b() or Key512b() can be used
+yourKey, err := cryptographer.Key256b()  // Note: alternatively Key128b() or Key512b() can be used
 ```
 
 Encrypt:
 
 ```sh
-ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
+ciphertext, err := cryptographer.EncryptAesGcm("some-important-plaintext", yourKey)
 ```
 
 Decrypt:
 ```sh
-plaintext, err := cryptography.DecryptAesGcm(ciphertext, yourKey)
+plaintext, err := cryptographer.DecryptAesGcm(ciphertext, yourKey)
 ```
 
 ###### Example ChaCha20-Poly1305
@@ -100,19 +100,19 @@ plaintext, err := cryptography.DecryptAesGcm(ciphertext, yourKey)
 Create a key:
 
 ```sh
-yourKey, err := cryptography.KeyChaCha20()
+yourKey, err := cryptographer.KeyChaCha20()
 ```
 
 Encrypt:
 
 ```sh
-ciphertext, err := cryptography.EncryptChaCha20("some-important-plaintext", yourKey)
+ciphertext, err := cryptographer.EncryptChaCha20("some-important-plaintext", yourKey)
 ```
 
 Decrypt:
 
 ```sh
-plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
+plaintext, err := cryptographer.DecryptChaCha20(ciphertext, yourKey)
 ```
 <br>
 
@@ -127,19 +127,19 @@ Asymmetric encryption algorithms use one key (referred to as 'public key') to en
 Create a key:
 
 ```sh
-privateKey, publicKey err := cryptography.RsaKeyPairPem()
+privateKey, publicKey err := cryptographer.RsaKeyPairPem()
 ```
 
 Encrypt:
 
 ```sh
-ciphertext, err := cryptography.EncryptRsa("some-important-plaintext", publicKey)
+ciphertext, err := cryptographer.EncryptRsa("some-important-plaintext", publicKey)
 ```
 
 Decrypt:
 
 ```sh
-plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
+plaintext, err := cryptographer.DecryptRsa(ciphertext, privateKey)
 ```
  
 &#x26A0; RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found in [ [5](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/) ]. If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
@@ -154,7 +154,7 @@ TOTPs are a highly popular method for adding extra security, e.g. in multi-facto
 Initial step: create a TotpManager instance with all the necessary data:
 
 ```sh
- secret, err := cryptography.Key512b() // Note: the secret must be of 64-byte size
+ secret, err := cryptographer.Key512b() // Note: the secret must be of 64-byte size
  if err := nil {
     // error handling logic
  }
