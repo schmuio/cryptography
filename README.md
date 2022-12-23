@@ -90,4 +90,7 @@ Decrypt:
 plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 ```
 <br>
-Note: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce) (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see _Wong, D.(2021).Real-World Cryptography.Manning Publications_ for details). In brief, do not use one key for more than 2^32 encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see _https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/_ for an excellent explanation of the problem).
+
+---
+
+Note: both algoritms use [nonces](https://csrc.nist.gov/glossary/term/nonce)  (numbers-only-used-once) during encryption and reuse of such nonces can have catastrophic consequences (see _Wong, D.(2021).Real-World Cryptography.Manning Publications_ for details). In brief, do not use one key for more than 2^32 encryption operations, i.e. rotate the key as frequently as needed so this threshold is not exceeded (see _https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/_ for an excellent explanation of the problem).
