@@ -73,6 +73,7 @@ plaintext, err := cryptography.DecryptAesGcm(ciphertext, yourKey)
 <br>
 <i>In case of the ChaCha20-Poly1305 algorithm:</i> <br><br>
 Create a key:
+
 ```sh
 yourKey, err := cryptography.KeyChaCha20()
 ```
