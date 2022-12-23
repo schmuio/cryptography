@@ -1,5 +1,5 @@
 # &#128273; cryptography
-A developer-oriented Go library with commonly applied cryptographic operations.
+An application developer-oriented Go library with commonly applied cryptographic operations.
 <br>
 <br>
 
