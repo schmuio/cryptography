@@ -70,7 +70,7 @@ Decrypt:
 plaintext, err := cryptography.DecryptAesGcm(ciphertext, yourKey)
 ```
 
-<br><br>
+<br>
 In case of the ChaCha20-Poly1305 algorithm: <br><br>
 Create a key:
 ```sh
