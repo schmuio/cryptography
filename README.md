@@ -4,6 +4,7 @@ A developer-oriented Go library with commonly applied cryptographic operations.
 
 ### <strong> Contents </strong>
 <br>
+
 - [Cryptography](#cryptography)
 - [Overview](#overview)
 - [What's in the box](#what's-in-the-box)
