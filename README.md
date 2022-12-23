@@ -95,7 +95,8 @@ plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 <br>
 <strong> Example 2: Asymmetric Encryption </strong>
 Asymmetric encryption algorithms use one key (referred to as 'public key') to encrypt data and another one (referred to as 'private key') to decrypt them. This is particularly useful in scenarios where many parties should be able to encrypt certain information but there is only one party that is to be allowed to decrypt it. Make sure the private key is <i> always </i> stored securely and do not share it. You can share the public key freely and do not need to treat it as a secret. The library implements the ubiquitous <strong>RSA-OAEP</strong> algorithm for asymmetric encryption/decryption.
-<br>Create a key:
+<br>
+Create a key:
 
 ```sh
 privateKey, publicKey err := cryptography.RsaKeyPairPem()
