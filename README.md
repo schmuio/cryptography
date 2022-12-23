@@ -1,7 +1,6 @@
 # &#128273; cryptography
 A developer-oriented Go library with commonly needed cryptographic operations.
 <br>
-<hr>
 
 ### <strong> Overview </strong>  
 The science of cryptography is <i>hugely</i> complex and often the worst vulnerabilities come not from the algorithms per se but rather from slight yet critical flaws in their implementation. We are not trying to step in the shoes of cryptographers, but to offer a compilation of trustworthy lower level implementations wrapped as developer-friendly higher level API that is safe, has everything in one place and is easy to get up and running.
