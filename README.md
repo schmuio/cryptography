@@ -198,7 +198,7 @@ RSA-PSS - digital signatures encryption, via Google Cloud Platform
 <br>
 RFC 6238 - time-based one-time passwords, native
 <br>
-*"native" refers to as locally executable code which does not rely on any external infrastructure
+*<i>native</i> refers to as locally executable code which does not rely on any external infrastructure
 
 <br>
 <br>
