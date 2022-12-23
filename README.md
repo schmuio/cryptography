@@ -232,7 +232,7 @@ RFC 6238 - time-based one-time passwords, native
 
 ## Contributing
 
-At present we plan to maintain this library on our own as it is getting shaped by the needs of the projects we are and will be using it for. As time is particularly limited, we prefer to not manage this repo as a particularly dynamic one. Nevertheless, we would warmly welcome any remarks, recommendations, feature requests or contribution proposals which we'll review on an individual basis. We commit to fix any bugs and inconsistencies in due course. Please contact us on schmuio@proton.me on any matter of interest.  
+At present we plan to maintain this library on our own as it is getting shaped by the needs of the projects we are and will be applying it for. As time is particularly limited, we prefer to not manage this repo as a particularly dynamic one. Nevertheless, we would warmly welcome any remarks, recommendations, feature requests or contribution proposals which we'll review on an individual basis. We commit to fix any bugs and inconsistencies in due course. Please contact us on schmuio@proton.me on any matter of interest.  
 <br>
  
 
