@@ -257,7 +257,7 @@ RFC 6238 - time-based one-time passwords, native
 <br>
  
 ## Tests
-Best effort has been made the code to be covered with meantingful tests. In order the Google Cloud Platform KMS-based encryption tests (and functions) to work, one needs to create keys as described in the GCP [documentation](https://cloud.google.com/kms/docs/algorithms) - for symmetric encrypt/decrypt, asymmetric encrypt/decrypt and asymmetric sign/verify purposes and set their resource names to the environment variables: - -- 
+Best effort has been made the code to be covered with meaningful tests. In order the Google Cloud Platform KMS-based encryption tests (and functions) to work, one needs to create keys as described in the GCP [documentation](https://cloud.google.com/kms/docs/algorithms) - for symmetric encrypt/decrypt, asymmetric encrypt/decrypt and asymmetric sign/verify purposes and set their resource names to the environment variables: - -- 
 - TEST_GKMS_SYMMETRIC_ENCRYPTION_KEY_RESOURCE_NAME
 - TEST_GKMS_RSA_ENCRYPTION_PRIVATE_KEY_RESOURCE_NAME
 - TEST_GKMS_RSA_SIGN_PRIVATE_KEY_RESOURCE_NAME
