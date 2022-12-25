@@ -263,7 +263,7 @@ Best effort has been made the code to be covered with meaningful tests. In order
 - TEST_GKMS_RSA_SIGN_PRIVATE_KEY_RESOURCE_NAME
 - TEST_GKMS_RSA_SIGN_PUBLIC_KEY_PEM.
 <br>
-If one intends to use only the native encryption functions please set DISABLE_GCP_TESTS to "1".
+If you intends to use only the native encryption functions please set DISABLE_GCP_TESTS to "1".
 <br>
 <br>
 
