@@ -15,7 +15,8 @@ An application developer-oriented Go library with commonly applied cryptographic
     - [AES-GCM](#example-aes-gcm)
     - [ChaCha20-Poly1305](#example-chacha20-poly1305)
   - [Asymmetric Encryption](#example-2---asymmetric-encryption)
-  - [Time Based One Time Passwords](#example-3---time-based-one-time-passwords)
+  - [Digital Signatures](#example-3---digital-signatures)
+  - [Time Based One Time Passwords](#example-4---time-based-one-time-passwords)
 - [Supported Algorithms](#supported-algorithms)
 - [Tests](#tests)
 - [Contributing](#contributing)
@@ -41,14 +42,14 @@ We have tried to cover a meaningful variety of cryptographic algorithms which ar
 ## Getting started
 Installation:
 ```sh
-go get github.com/schmuio/x/cryptography
+go get github.com/schmuio/cryptography
 ```
 Import it in your code and and you are ready to go:
 ```sh
 package yourpackage
 
 import (
-    "github.com/schmuio/x/cryptography"
+    "github.com/schmuio/cryptography"
 )
 yourKey, err := cryptography.Key256b()
 if err != nil {
@@ -69,7 +70,7 @@ For the sake of avoiding repetition we assume that in every example snippet one 
 package yourpackage
 
 import (
-    "github.com/schmuio/x/cryptography"
+    "github.com/schmuio/cryptography"
 )
 ```
 
@@ -145,7 +146,26 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 &#x26A0; RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found in [ [5](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/) ]. If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
 <br>
 
-#### Example 3 - Time based one-time passwords
+#### Example 3 - Digital signatures
+Digital signatures are asymmetric cryptography algorithms that provide proof of the orgin of a message and its integrity (i.e. that it comes from the expected source and that it has not been modified). Digital signatures are issued with a private key and are verified with the a public key. The private key should be stored securely at all times should never be shared. The puplic key can be shared with any party that is interested in checking messages signed by the issuer who holds the private key. 
+ 
+Create a key:
+
+```sh
+privateKey, publicKey err := cryptography.RsaKeyPairPem()
+```
+
+Sign:
+```sh
+signature, err := cryptography.SignRsaPss("some-very-important-message", privateKeyPem)
+```
+Veryfy signature
+```sh
+err = cryptography.VerifyRsaPss("some-very-important-message", signature, privateKeyPem)
+```
+<br>
+
+#### Example 4 - Time based one-time passwords
 
 TOTPs are a highly popular method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties can derive the same code independently, see details here <a href="https://www.ietf.org/rfc/rfc6238.txt">RFC6238</a>. The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
 <br>
