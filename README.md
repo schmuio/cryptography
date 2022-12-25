@@ -167,7 +167,7 @@ err = cryptography.VerifyRsaPss("some-very-important-message", signature, privat
 <br>
 
 #### Example 4 - Time based one-time passwords
-<div style="width: 50%; border-bottom: 0.5px solid grey"></div>
+<div style="width: 50%; border-bottom: 0.5px solid blue"></div>
 TOTPs are a highly popular method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties can derive the same code independently, see details here <a href="https://www.ietf.org/rfc/rfc6238.txt">RFC6238</a>. The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
 <br>
 <br>
