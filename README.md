@@ -165,7 +165,7 @@ err = cryptography.VerifyRsaPss("some-very-important-message", signature, privat
 ```
 &#x26A0; It is recomended that RSA-PSS is used whenever possible whereas RSA-PKCS1v15 is also included for cases where compatibility mandades the use of the latter. See [ <a href="https://www.manning.com/books/real-world-cryptography">1</a> ] for a detailed review and comparison of digital signatures algorithms.
 <br>
-&#9245;
+
 #### Example 4 - Time based one-time passwords
  
 TOTPs are a highly popular method for adding extra security, e.g. in multi-factor authentication settings. They are derived from the present Unix time and a shared secret provided to an HMAC algorithm. The synchronisation of the Unix time clocks of the client and the server, as well as their shared secret, combined with a deterministic hash algorithm enusure that both parties can derive the same code independently, see details here <a href="https://www.ietf.org/rfc/rfc6238.txt">RFC6238</a>. The library provides a straightforward-to-use API for creating TOTPs and secrets rendered as QR codes so that one can very easily integrate it with 2FA apps like Authy, Google Authenticator, Microsoft Authenticator, etc.
