@@ -230,6 +230,7 @@ ECDSA p256/p384/secp256k1 - digital signatures, via Google Cloud Platform
 <br>
 RFC 6238 - time-based one-time passwords, native
 <br>
+<br>
 *<i>native</i> refers to as locally executable code which does not rely on any external infrastructure
 
 <br>
