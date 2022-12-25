@@ -14,6 +14,9 @@
 # Environment
 *env
 *.env
+*env.sh
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+local_keys/
+*local_keys
