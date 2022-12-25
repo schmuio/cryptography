@@ -25,7 +25,7 @@ Application-developer-oriented library with commonly applied cryptographic opera
 <br>
 
 ## Overview
-A compilation of reliable lower level implementations wrapped as developer-friendly higher level API that is safe, has everything in one place and is easy to get up and running. 
+A compilation of reliable lower level implementations wrapped as developer-friendly higher level API that is safe, has everything in one place and is easy to use. 
 <br>
 <br>
 
