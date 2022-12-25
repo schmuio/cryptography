@@ -163,6 +163,7 @@ Veryfy signature
 ```sh
 err = cryptography.VerifyRsaPss("some-very-important-message", signature, privateKeyPem)
 ```
+&#x26A0; It is recomended that RSA-PSS is used whenever possible whereas as RSA-PKCS1v15 is also included for cases where compatibility mandades the use of the latter. See [ <a href="https://www.manning.com/books/real-world-cryptography">1</a> ] for a detailed review and comparison of digital signatures algorithms.
 <br>
 
 #### Example 4 - Time based one-time passwords
