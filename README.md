@@ -253,7 +253,6 @@ RFC 6238 - time-based one-time passwords, native
 <br>
 <br>
 *<i>native</i> refers to as locally executable code which does not rely on any external infrastructure
-
 <br>
  
 ## Tests
@@ -265,6 +264,7 @@ Best effort has been made the code to be covered with meantingful tests. In orde
 <br>
 If one intends to use only the native encryption functions please set DISABLE_GCP_TESTS to "1".
 
+<br>
 <br>
 
 ## Contributing
