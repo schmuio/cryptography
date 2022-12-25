@@ -275,7 +275,4 @@ At present we plan to maintain this library on our own as it is getting shaped b
 [7] https://soatok.blog/2020/12/24/cryptographic-wear-out-for-symmetric-encryption/
 <br>
 <br>
-[8] https://csrc.nist.gov/glossary/term/nonce
-<br>
-<br>
-[9] https://www.ietf.org/rfc/rfc6238.txt
+[8] https://www.ietf.org/rfc/rfc6238.txt
