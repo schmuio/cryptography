@@ -176,7 +176,7 @@ Initial step: create a TotpManager instance with all the necessary data:
 
 ```sh
  secret, err := cryptography.Key512b() // Note: the secret must be of 64-byte size
- if err := nil {
+ if err != nil {
     // error handling logic
  }
 
@@ -192,7 +192,7 @@ Initial step: create a TotpManager instance with all the necessary data:
 Generate a TOTP:
 ```sh
 totp, err := tm.TOTP()  // The result is a string of 6 decimal digits like "123456"
-if err := nil {
+if err != nil {
     // error handling logic
 }
 ```
@@ -200,7 +200,7 @@ if err := nil {
 Validate a TOTP:
 ```sh
 isValid, err := tm.Validate(totp)
-if err := nil {
+if err != nil {
     // error handling logic
 }
 ```
@@ -208,7 +208,7 @@ if err := nil {
 Generate QR code:
 ```sh
 qrCodeBase64, err := tm.QrCode()
-if err := nil {
+if err != nil {
     // error handling logic
 }
 
