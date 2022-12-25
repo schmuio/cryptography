@@ -1,4 +1,4 @@
-# &#128273; cryptographer
+# &#128273; cryptography
 An application developer-oriented Go library with commonly applied cryptographic operations.
 <br>
 <br>
@@ -39,22 +39,22 @@ We have tried to cover a meaningful variety of cryptographic algorithms which ar
 <br>
 
 ## Getting started
-Install the library:
+Installation:
 ```sh
-go get github.com/schmuio/cryptography/cryptographer
+go get github.com/schmuio/x/cryptography
 ```
 Import it in your code and and you are ready to go:
 ```sh
 package yourpackage
 
 import (
-    "github.com/schmuio/cryptography/cryptographer"
+    "github.com/schmuio/x/cryptography"
 )
 yourKey, err := cryptography.Key256b()
 if err != nil {
     // error handling logic
 }
-ciphertext, err := cryptographer.EncryptAesGcm("some-important-plaintext", yourKey)
+ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
 ```
 <br>
 
@@ -69,7 +69,7 @@ For the sake of avoiding repetition we assume that in every example snippet one 
 package yourpackage
 
 import (
-    "github.com/schmuio/cryptography/cryptographer"
+    "github.com/schmuio/x/cryptography"
 )
 ```
 
@@ -81,18 +81,18 @@ Symmetric encryption algorithms use the same key to encrypt the plaintext and de
 
 Create a key:
 ```sh
-yourKey, err := cryptographer.Key256b()  // Note: alternatively Key128b() or Key512b() can be used
+yourKey, err := cryptography.Key256b()  // Note: alternatively Key128b() or Key512b() can be used
 ```
 
 Encrypt:
 
 ```sh
-ciphertext, err := cryptographer.EncryptAesGcm("some-important-plaintext", yourKey)
+ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKey)
 ```
 
 Decrypt:
 ```sh
-plaintext, err := cryptographer.DecryptAesGcm(ciphertext, yourKey)
+plaintext, err := cryptography.DecryptAesGcm(ciphertext, yourKey)
 ```
 
 ###### Example ChaCha20-Poly1305
@@ -100,19 +100,19 @@ plaintext, err := cryptographer.DecryptAesGcm(ciphertext, yourKey)
 Create a key:
 
 ```sh
-yourKey, err := cryptographer.KeyChaCha20()
+yourKey, err := cryptography.KeyChaCha20()
 ```
 
 Encrypt:
 
 ```sh
-ciphertext, err := cryptographer.EncryptChaCha20("some-important-plaintext", yourKey)
+ciphertext, err := cryptography.EncryptChaCha20("some-important-plaintext", yourKey)
 ```
 
 Decrypt:
 
 ```sh
-plaintext, err := cryptographer.DecryptChaCha20(ciphertext, yourKey)
+plaintext, err := cryptography.DecryptChaCha20(ciphertext, yourKey)
 ```
 <br>
 
@@ -127,19 +127,19 @@ Asymmetric encryption algorithms use one key (referred to as 'public key') to en
 Create a key:
 
 ```sh
-privateKey, publicKey err := cryptographer.RsaKeyPairPem()
+privateKey, publicKey err := cryptography.RsaKeyPairPem()
 ```
 
 Encrypt:
 
 ```sh
-ciphertext, err := cryptographer.EncryptRsa("some-important-plaintext", publicKey)
+ciphertext, err := cryptography.EncryptRsa("some-important-plaintext", publicKey)
 ```
 
 Decrypt:
 
 ```sh
-plaintext, err := cryptographer.DecryptRsa(ciphertext, privateKey)
+plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 ```
  
 &#x26A0; RSA encryption is not designed to encrypt large messages and the maximim size of the plaintext is restricted by the size of the public key (e.g. 2048 bits) including deductions for padding, etc., details can be found in [ [5](https://mbed-tls.readthedocs.io/en/latest/kb/cryptography/rsa-encryption-maximum-data-size/) ]. If you need to encrypt longer messages and still rely on an asymmetric encryption workflow a solution is to use hybrid encryption - use a symmetric algorithm for the data and encrypt the symmetric key with an asymmetric algorithm.
@@ -154,7 +154,7 @@ TOTPs are a highly popular method for adding extra security, e.g. in multi-facto
 Initial step: create a TotpManager instance with all the necessary data:
 
 ```sh
- secret, err := cryptographer.Key512b() // Note: the secret must be of 64-byte size
+ secret, err := cryptography.Key512b() // Note: the secret must be of 64-byte size
  if err := nil {
     // error handling logic
  }
@@ -218,18 +218,25 @@ RSA-OAEP - asymmetric encryption, native
 <br>
 RSA-OAEP - asymmetric encryption, via Google Cloud Platform
 <br>
-RSA-PSS - digital signatures encryption, native
+RSA-PKCS1v15 - digital signatures, native
 <br>
-RSA-PSS - digital signatures encryption, via Google Cloud Platform
+RSA-PKCS1v15 - digital signatures, via Google Cloud Platform
+<br>
+RSA-PSS - digital signatures, native
+<br>
+RSA-PSS - digital signatures, via Google Cloud Platform
+<br>
+ECDSA p256/p384/secp256k1 - digital signatures, via Google Cloud Platform
 <br>
 RFC 6238 - time-based one-time passwords, native
+<br>
 <br>
 *<i>native</i> refers to as locally executable code which does not rely on any external infrastructure
 
 <br>
  
 ## Tests
-Best effort has been made the code to be covered with meantingful tests. In order the Google Cloud Platform KMS-based encryption tests (and functions) to work, one needs to create keys as described in the GCP [documentation](https://cloud.google.com/kms/docs/algorithms) - for symmetric encrypt/decrypt, asymmetric encrypt/decrypt and asymmetric sign/verify purposes and set their resource names to the environment variables TEST_GKMS_SYMMETRIC_ENCRYPTION_KEY_RESOURCE_NAME, TEST_GKMS_RSA_ENCRYPTION_PRIVATE_KEY_RESOURCE_NAME and TEST_GKMS_RSA_SIGN_PRIVATE_KEY_RESOURCE_NAME.
+Best effort has been made the code to be covered with meantingful tests. In order the Google Cloud Platform KMS-based encryption tests (and functions) to work, one needs to create keys as described in the GCP [documentation](https://cloud.google.com/kms/docs/algorithms) - for symmetric encrypt/decrypt, asymmetric encrypt/decrypt and asymmetric sign/verify purposes and set their resource names to the environment variables TEST_GKMS_SYMMETRIC_ENCRYPTION_KEY_RESOURCE_NAME, TEST_GKMS_RSA_ENCRYPTION_PRIVATE_KEY_RESOURCE_NAME and TEST_GKMS_RSA_SIGN_PUBLIC_KEY_PEM.
 If one intends to use only the native encryption functions please set DISABLE_GCP_TESTS to "1".
 
 <br>
