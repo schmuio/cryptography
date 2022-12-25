@@ -229,27 +229,27 @@ For our purposes we prefer to use SHA256, however we do not argue that the SHA1 
 
 ## Supported Algorithms
 
-AES-GCM - symmetric encryption, native*
+- AES-GCM | symmetric encryption | native*
 <br>
-AES-GCM - symmetric encryption, via Google Cloud Platform
+- AES-GCM | symmetric encryption | via Google Cloud Platform
 <br>
-ChaCha20-Poly1305 - symmetric encryption, native
+- ChaCha20-Poly1305 | symmetric encryption | native
 <br>
-RSA-OAEP - asymmetric encryption, native
+- RSA-OAEP | asymmetric encryption | native
 <br>
-RSA-OAEP - asymmetric encryption, via Google Cloud Platform
+- RSA-OAEP | asymmetric encryption | via Google Cloud Platform
 <br>
-RSA-PKCS1v15 - digital signatures, native
+- RSA-PKCS1v15 | digital signatures | native
 <br>
-RSA-PKCS1v15 - digital signatures, via Google Cloud Platform
+- RSA-PKCS1v15 | digital signatures | via Google Cloud Platform
 <br>
-RSA-PSS - digital signatures, native
+- RSA-PSS | digital signatures | native
 <br>
-RSA-PSS - digital signatures, via Google Cloud Platform
+- RSA-PSS | digital signatures | via Google Cloud Platform
 <br>
-ECDSA p256/p384/secp256k1 - digital signatures, via Google Cloud Platform
+- ECDSA p256/p384/secp256k1 | digital signatures | via Google Cloud Platform
 <br>
-RFC 6238 - time-based one-time passwords, native
+- RFC 6238 | time-based one-time passwords | native
 <br>
 <br>
 *<i>native</i> refers to as locally executable code which does not rely on any external infrastructure
