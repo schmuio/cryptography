@@ -128,7 +128,7 @@ Asymmetric encryption algorithms use one key (referred to as 'public key') to en
 Create a key:
 
 ```sh
-privateKey, publicKey err := cryptography.RsaKeyPairPem()
+privateKey, publicKey, err := cryptography.RsaKeyPairPem()
 ```
 
 Encrypt:
@@ -152,7 +152,7 @@ Digital signatures are asymmetric cryptography entities that provide proof of th
 Create a key:
 
 ```sh
-privateKey, publicKey err := cryptography.RsaKeyPairPem()
+privateKey, publicKey, err := cryptography.RsaKeyPairPem()
 ```
 
 Sign:
