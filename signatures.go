@@ -99,7 +99,7 @@ func SignRsaPss(message string, privateKeyPem string) (string, error) {
 	return hexEncodedSignature, nil
 }
 
-// VerifyRsaPss checks the validity of RSA PKCS1v15 digital signatures using a PEM formated public key
+// VerifyRsaPss checks the validity of RSA PSS digital signatures using a PEM formated public key
 func VerifyRsaPss(message string, signatureHex string, publicKeyPem string) error {
 	// Convert plaintext message into bytes
 	messageBytes := []byte(message)
