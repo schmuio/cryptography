@@ -278,7 +278,7 @@ At present we plan to maintain this library on our own because it is getting sha
 [1] Wong, D.(2021).<i>Real-World Cryptography</i>.Manning Publications
 <br>
 <br>
-[2] Aumasson, J.P.(2017).<i>Serious Cryptography</i>. No Starch Press
+[2] Aumasson, J.P.(2017).<i>Serious Cryptography</i>.No Starch Press
 <br>
 <br>
 [3] https://duo.com/decipher/sha-1-fully-and-practically-broken-by-new-collision
