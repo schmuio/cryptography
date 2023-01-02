@@ -1,6 +1,7 @@
 # &#128273; cryptography
 
-[Go Report Card](https://goreportcard.com/report/github.com/schmuio/cryptography)
+[![GoDoc](https://pkg.go.dev/badge/github.com/schmuio/cryptography?status.svg)](https://pkg.go.dev/github.com/schmuio/cryptography?tab=doc)
+[![Go Report Card](https://goreportcard.com/badge/github.com/schmuio/cryptography)]
 Application-developer-oriented library with commonly applied cryptographic operations.
 <br>
 <br>
