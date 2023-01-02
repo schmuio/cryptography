@@ -4,6 +4,8 @@ import (
 	kms "cloud.google.com/go/kms/apiv1"
 	"context"
 	"crypto"
+	"crypto/ecdsa"
+	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
@@ -228,4 +230,95 @@ func verifyRsaSignatureGkms(message string, signatureHex string, rsaKey *rsa.Pub
 		return fmt.Errorf("verifyRsaSignatureGkms failed to verify signature: [%w]", err)
 	}
 	return nil
+}
+
+// ECDSA P256 native
+//////////////////////////////////////////////////////////////////////////////////
+
+// SignEcdsa issues hex-encoded ECDSA P256 digital signatures using a hex-encoded private key
+func SignEcdsa(message string, privateKeyHex string) (string, error) {
+	privateKey, err := EcdsaPrivateKeyFromHex(privateKeyHex)
+	if err != nil {
+		return "", fmt.Errorf("SignEcdsa failed to parse private key with error: [%w]", err)
+	}
+	messageHash := sha256.Sum256([]byte(message))
+	signature, err := ecdsa.SignASN1(rand.Reader, privateKey, messageHash[:])
+	if err != nil {
+		return "", fmt.Errorf("SignEcdsa failed to issue signature with error: [%w]", err)
+	}
+	return hex.EncodeToString(signature), nil
+}
+
+// VerifyEcdsa checks the validity of ECDSA P256 digital signatures using a hex-encoded public key
+func VerifyEcdsa(message string, signatureHex string, publicKeyHex string) error {
+	publicKey, err := EcdsaPublicKeyFromHex(publicKeyHex)
+	if err != nil {
+		return fmt.Errorf("VerifyEcdsa failed to parse public key with error: [%w]", err)
+	}
+	signatureBytes, err := hex.DecodeString(signatureHex)
+	if err != nil {
+		return fmt.Errorf("VerifyEcdsa failed to parse signature key with error: [%w]", err)
+	}
+	messageHash := sha256.Sum256([]byte(message))
+	isValid := ecdsa.VerifyASN1(publicKey, messageHash[:], signatureBytes)
+	if isValid != true {
+		return errors.New("Singature verification failed")
+	}
+	return nil
+}
+
+// EcdsaKeyPair generates privateKey and public key for ECDSA sign/verify purposes
+func EcdsaKeyPair() (*ecdsa.PrivateKey, *ecdsa.PublicKey, error) {
+	privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+	if err != nil {
+		return nil, nil, fmt.Errorf("EcdsaKeyPair failed generating private key with error: [%w]", err)
+	}
+	return privateKey, &privateKey.PublicKey, nil
+}
+
+// EcdsaKeyPairHex generates hex-encoded privateKey and public key for ECDSA sign/verify purposes
+func EcdsaKeyPairHex() (string, string, error) {
+	privateKey, publicKey, err := EcdsaKeyPair()
+	if err != nil {
+		return "", "", fmt.Errorf("EcdsaKeyPairHex failed to generate key pair with error: [%w]", err)
+	}
+	privateKeyBytes, err := x509.MarshalECPrivateKey(privateKey)
+	if err != nil {
+		return "", "", fmt.Errorf("EcdsaKeyPairHex failed to marshal private key with error: [%w]", err)
+	}
+	publicKeyBytes, err := x509.MarshalPKIXPublicKey(publicKey)
+	if err != nil {
+		return "", "", fmt.Errorf("EcdsaKeyPairHex failed to marshal public key with error: [%w]", err)
+	}
+	return hex.EncodeToString(privateKeyBytes), hex.EncodeToString(publicKeyBytes), nil
+}
+
+// EcdsaPrivateKeyFromHex parses a hex-encoded ECDSA private key into *ecdsa.PrivateKey
+func EcdsaPrivateKeyFromHex(privateKeyHex string) (*ecdsa.PrivateKey, error) {
+	privateKeyBytes, err := hex.DecodeString(privateKeyHex)
+	if err != nil {
+		return nil, fmt.Errorf("EcdsaPrivateKeyFromHex failed to decode string with error: [%w]", err)
+	}
+	privateKey, err := x509.ParseECPrivateKey(privateKeyBytes)
+	if err != nil {
+		return nil, fmt.Errorf("EcdsaPrivateKeyFromHex failed to parse key with error: [%w]", err)
+	}
+	return privateKey, nil
+}
+
+// EcdsaPublicKeyFromHex parses a hex-encoded ECDSA public key into *ecdsa.PublicKey
+func EcdsaPublicKeyFromHex(publicKeyHex string) (*ecdsa.PublicKey, error) {
+	publicKeyBytes, err := hex.DecodeString(publicKeyHex)
+	if err != nil {
+		return nil, fmt.Errorf("EcdsaPublicKeyFromHex failed to decode string with error: [%w]", err)
+	}
+	publicKeyInterface, err := x509.ParsePKIXPublicKey(publicKeyBytes)
+	if err != nil {
+		return nil, fmt.Errorf("EcdsaPublicKeyFromHex failed to parse key with error: [%w]", err)
+	}
+	publicKey, ok := publicKeyInterface.(*ecdsa.PublicKey)
+	if ok != true {
+		return nil, errors.New("EcdsaPublicKeyFromHex failed to convert hex encoded string into a *ecdsa.PublicKey")
+	}
+	return publicKey, nil
 }
