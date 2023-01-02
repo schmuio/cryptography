@@ -16,6 +16,8 @@ Application-developer-oriented library with commonly applied cryptographic opera
     - [ChaCha20-Poly1305](#example-chacha20-poly1305)
   - [Asymmetric Encryption](#example-2---asymmetric-encryption)
   - [Digital Signatures](#example-3---digital-signatures)
+    - [RSA-PSS](#example-rsa-pss)
+    - [ECDSA-P256](#example-ecdsa-p256)
   - [Time Based One Time Passwords](#example-4---time-based-one-time-passwords)
 - [Supported Algorithms](#supported-algorithms)
 - [Tests](#tests)
@@ -148,7 +150,9 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 
 #### Example 3 - Digital signatures
 Digital signatures are asymmetric cryptography entities that provide proof of the orgin of a message and its integrity (i.e. that it comes from the expected source and that it has not been modified). Digital signatures are issued with the private key and are verified with the public key. The private key should be stored securely at all times and should never be shared. The puplic key can be shared with any party that is interested in checking messages signed by the issuer who holds the private key. 
- 
+
+###### Example RSA PSS
+
 Create a key:
 
 ```sh
@@ -161,10 +165,27 @@ signature, err := cryptography.SignRsaPss("some-very-important-message", private
 ```
 Veryfy signature
 ```sh
-err = cryptography.VerifyRsaPss("some-very-important-message", signature, privateKeyPem)
+err = cryptography.VerifyRsaPss("some-very-important-message", signature, publicKeyPem)
 ```
-&#x26A0; It is recomended that RSA-PSS is used whenever possible whereas RSA-PKCS1v15 is also included for cases where compatibility mandades the use of the latter. See [ <a href="https://www.manning.com/books/real-world-cryptography">1</a> ] for a detailed review and comparison of digital signatures algorithms.
+
+###### Example ECDSA P256
+
+```sh
+privateKey, publicKey, err := cryptography.EcdsaKeyPairHex()
+```
+
+Sign:
+```sh
+signature, err := cryptography.SignEcdsa("some-very-important-message", privateKey)
+```
+Veryfy signature
+```sh
+err = cryptography.VerifyEcdsa("some-very-important-message", signature, publicKey)
+```
+
+&#x26A0; It is recomended that RSA-PSS or ECDSA is used whenever possible whereas RSA-PKCS1v15 is also included for cases where compatibility mandades the use of the latter. See [ <a href="https://www.manning.com/books/real-world-cryptography">1</a> ] for a detailed review and comparison of digital signatures algorithms.
 <br>
+
 
 #### Example 4 - Time based one-time passwords
  
