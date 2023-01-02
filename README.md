@@ -149,7 +149,7 @@ plaintext, err := cryptography.DecryptRsa(ciphertext, privateKey)
 <br>
 
 #### Example 3 - Digital signatures
-Digital signatures are asymmetric cryptography entities that provide proof of the orgin of a message and its integrity (i.e. that it comes from the expected source and that it has not been modified). Digital signatures are issued with the private key and are verified with the public key. The private key should be stored securely at all times and should never be shared. The puplic key can be shared with any party that is interested in checking messages signed by the issuer who holds the private key. 
+Digital signatures are asymmetric cryptography entities that provide proof of the origin of a message and its integrity (i.e. that it comes from the expected source and that it has not been modified). Digital signatures are issued with the private key and are verified with the public key. The private key should be stored securely at all times and should never be shared. The puplic key can be shared with any party that is interested in checking messages signed by the issuer who holds the private key. 
 
 ###### Example RSA PSS
 
