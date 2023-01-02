@@ -1,4 +1,6 @@
 # &#128273; cryptography
+
+[Go Report Card](https://goreportcard.com/report/github.com/schmuio/cryptography)
 Application-developer-oriented library with commonly applied cryptographic operations.
 <br>
 <br>
