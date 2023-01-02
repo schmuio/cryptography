@@ -296,7 +296,7 @@ func Test_PublicRsaKeyFromPrivateKeyName(t *testing.T) {
 		t.Skip("WARNING: GCP related functions tests DISABLED, set DISABLE_GCP_TESTS != 1 to enable them. This means that GCP KMS cryptography code is untested")
 	}
 
-	// Want: the public key is retrived and it is convertible to PEM format
+	// Want: the public key is retrieved and it is convertible to PEM format
 	privateKeyName, ok := os.LookupEnv("TEST_GKMS_RSA_ENCRYPTION_PRIVATE_KEY_RESOURCE_NAME")
 	if ok != true {
 		t.Fatal("To test this function please set TEST_GKMS_RSA_ENCRYPTION_PRIVATE_KEY_RESOURCE_NAME environment variable to a valid GKMS resource name, see https://cloud.google.com/kms/docs/creating-keys for details")
