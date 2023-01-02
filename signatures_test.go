@@ -193,7 +193,7 @@ func TestSignAndVerifyEcdsa(t *testing.T) {
 	if err == nil {
 		t.Errorf("should have not verified the signature of a fake message")
 	}
-	assert.Equal(t, err.Error(), "Singature verification failed")
+	assert.Equal(t, err.Error(), "Signature verification failed")
 
 	// Want: message not verified in case of using the wrong key
 	_, anotherPublicKeyHex, err := EcdsaKeyPairHex()
@@ -204,5 +204,5 @@ func TestSignAndVerifyEcdsa(t *testing.T) {
 	if err == nil {
 		t.Errorf("should have not verified the signature with a wrong public key")
 	}
-	assert.Equal(t, err.Error(), "Singature verification failed")
+	assert.Equal(t, err.Error(), "Signature verification failed")
 }

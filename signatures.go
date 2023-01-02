@@ -262,7 +262,7 @@ func VerifyEcdsa(message string, signatureHex string, publicKeyHex string) error
 	messageHash := sha256.Sum256([]byte(message))
 	isValid := ecdsa.VerifyASN1(publicKey, messageHash[:], signatureBytes)
 	if isValid != true {
-		return errors.New("Singature verification failed")
+		return errors.New("Signature verification failed")
 	}
 	return nil
 }
