@@ -101,7 +101,7 @@ func TestSignAndVerifyGkms(t *testing.T) {
 		t.Fatalf("signature verification failed with error: %v", err)
 	}
 
-	// Want: verfication error on incorrect message
+	// Want: verification error on incorrect message
 	err = VerifySignatureGkms(fakeMessage, signature, publicKeyPem)
 	assert.Contains(t, err.Error(), "[crypto/rsa: verification error]")
 }
