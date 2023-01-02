@@ -1,6 +1,8 @@
 package cryptography
 
 import (
+	"crypto/x509"
+	"encoding/hex"
 	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
@@ -102,4 +104,105 @@ func TestSignAndVerifyGkms(t *testing.T) {
 	// Want: verfication error on incorrect message
 	err = VerifySignatureGkms(fakeMessage, signature, publicKeyPem)
 	assert.Contains(t, err.Error(), "[crypto/rsa: verification error]")
+}
+
+// ECDSA - native
+//////////////////////////////////////////////////////////////////////////////////
+
+func TestEcdsaKeyPair(t *testing.T) {
+	// Want: successful generation of a key pair
+	privateKey, publicKey, err := EcdsaKeyPair()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+
+	privateKeyBytes, err := x509.MarshalECPrivateKey(privateKey)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	assert.Equal(t, 242, len(hex.EncodeToString(privateKeyBytes)))
+	publicKeyBytes, err := x509.MarshalPKIXPublicKey(publicKey)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	assert.Equal(t, 182, len(hex.EncodeToString(publicKeyBytes)))
+}
+
+func TestEcdsaKeyPairHex(t *testing.T) {
+	// Want: successful generation of a key pair
+	privateKeyHex, publicKeyHex, err := EcdsaKeyPairHex()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	assert.Equal(t, 242, len(privateKeyHex))
+	assert.Equal(t, 182, len(publicKeyHex))
+}
+
+func TestEcdsaPrivateKeyFromHex(t *testing.T) {
+	// Want: private key is converted from hex to *ecdsa.PrivateKey and back to bytes without errors
+	privateKeyHex, _, err := EcdsaKeyPairHex()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	privateKey, err := EcdsaPrivateKeyFromHex(privateKeyHex)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	_, err = x509.MarshalECPrivateKey(privateKey)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+}
+
+func TestEcdsaPublicKeyFromHex(t *testing.T) {
+	// Want: private key is converted from hex to *ecdsa.PrivateKey and back to bytes without errors
+	_, publicKeyHex, err := EcdsaKeyPairHex()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	publicKey, err := EcdsaPublicKeyFromHex(publicKeyHex)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	_, err = x509.MarshalPKIXPublicKey(publicKey)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+}
+
+func TestSignAndVerifyEcdsa(t *testing.T) {
+	// Want: signing and verification work end-to-end
+	privateKeyHex, publicKeyHex, err := EcdsaKeyPairHex()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	message := "a-very-important-message"
+	signature, err := SignEcdsa(message, privateKeyHex)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	assert.Greater(t, len(signature), 128)
+	err = VerifyEcdsa(message, signature, publicKeyHex)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+
+	// Want: verification failure on a wrong message
+	fakeMessage := "this-message-has-been-tempered-with"
+	err = VerifyEcdsa(fakeMessage, signature, publicKeyHex)
+	if err == nil {
+		t.Errorf("should have not verified the signature of a fake message")
+	}
+	assert.Equal(t, err.Error(), "Singature verification failed")
+
+	// Want: message not verified in case of using the wrong key
+	_, anotherPublicKeyHex, err := EcdsaKeyPairHex()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	err = VerifyEcdsa(message, signature, anotherPublicKeyHex)
+	if err == nil {
+		t.Errorf("should have not verified the signature with a wrong public key")
+	}
+	assert.Equal(t, err.Error(), "Singature verification failed")
 }
