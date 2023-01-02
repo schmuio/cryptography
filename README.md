@@ -247,6 +247,8 @@ For our purposes we prefer to use SHA256, however we do not argue that the SHA1 
 
 - RSA-PSS | digital signatures | via Google Cloud Platform
 
+- ECDSA p256 | digital signatures | native
+
 - ECDSA p256/p384/secp256k1 | digital signatures | via Google Cloud Platform
 
 - RFC 6238 | time-based one-time passwords | native
