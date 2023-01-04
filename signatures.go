@@ -192,7 +192,7 @@ func SignGkms(message string, privateKeyName string) (string, error) {
 func VerifySignatureGkms(message string, signatureHex string, publicKeyPem string) error {
 	// Parse the key
 	block, _ := pem.Decode([]byte(publicKeyPem))
-	if block == nil || block.Type != "PUBLIC KEY" {
+	if block == nil {
 		return errors.New("VerifySignatureGkms failed decode PEM block containing public key")
 	}
 	publicKey, err := x509.ParsePKIXPublicKey(block.Bytes)
