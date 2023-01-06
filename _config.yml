@@ -1,8 +1,0 @@
-
-title: Go Cryptography
-description: A developer-oriented high-level library with commonly needed cryptographic operations. 
-baseurl: "/cryptography" # the subpath of your site, e.g. /blog
-url: "https://schmuio.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-
-theme: minima
- 
