@@ -1,0 +1,8 @@
+theme: jekyll-theme-cayman
+title: schmuio/cryptography
+description: High Level Cryptoraphy API in Go
+url: https://github.com/schmuio/cryptography
+author: schmu.io@proton.me
+plugins:
+  - jekyll-seo-tag
+google_analytics: G-TP0ZF8E5Q3
