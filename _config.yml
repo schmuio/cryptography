@@ -1,4 +1,4 @@
-theme: jekyll-theme-architect
+theme: jekyll-theme-cayman
 title: schmuio/cryptography
 description: High Level Cryptoraphy API in Go
 url: https://github.com/schmuio/cryptography
