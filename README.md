@@ -252,9 +252,9 @@ For our purposes we prefer to use SHA256, however we do not argue that the SHA1 
 <br>
 <br>
 
-## Supported Algorithm 
+## Supported Algorithms 
 
-- AES-GCM &#8883 symmetric encryption &#8883 native*
+- AES-GCM <span>&#8883</span> symmetric encryption <span>&#8883</span> native*
 
 - AES-GCM &#8883 symmetric encryption &#8883 via Google Cloud Platform
 
