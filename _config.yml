@@ -1,4 +1,4 @@
-remote_theme: pages-themes/architect@v0.2.0
+theme: cayman
 title: schmuio/cryptography
 description: High Level Cryptoraphy API in Go
 url: https://github.com/schmuio/cryptography
