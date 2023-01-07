@@ -1,4 +1,4 @@
-theme: jekyll-theme-cayman
+theme: slate
 title: schmuio/cryptography
 description: High Level Cryptoraphy API in Go
 url: https://github.com/schmuio/cryptography
