@@ -255,6 +255,88 @@ func Test_DecryptRsaGKMS_NegativePath(t *testing.T) {
 	}
 }
 
+// Envelope Encryption
+//////////////////////////////////////////////////////////////////////////////////
+
+func TestEnvelopeEncryptAes_InvalidAsymmetricKey(t *testing.T) {
+	// Want: function does not panic and returns the expected errors
+	_, _, err := EnvelopeEncryptAes("some-plaintext", "")
+	assert.Contains(t, err.Error(), "EnvelopeEncrypt failed to encrypt ephemeral key with error: [EncryptRsa failed to parse public key with error: [failed to parse PEM block containing the key]]")
+
+	_, _, err = EnvelopeEncryptAes("some-plaintext", "invalid-key-format")
+	assert.Contains(t, err.Error(), "EnvelopeEncrypt failed to encrypt ephemeral key with error: [EncryptRsa failed to parse public key with error: [failed to parse PEM block containing the key]]")
+}
+
+func TestEnvelopeEncryptAes_PositivePath(t *testing.T) {
+	// Want: encryption works end to end
+	privateKey, publicKey, err := RsaKeyPairPem()
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	plaintext := "some-pretty-important-plaintext"
+	ciphertext, encSymKey, err := EnvelopeEncryptAes(plaintext, publicKey)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+
+	// Want: the symmetric key is decryptable with the private asymmetric key
+	symKey, err := DecryptRsa(encSymKey, privateKey)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	assert.Equal(t, 32, len(symKey))
+
+	// Want: ciphertext is decryptable by symKey
+	decryptedCiphertext, err := DecryptAesGcm(ciphertext, symKey)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	assert.Equal(t, plaintext, decryptedCiphertext)
+}
+
+func TestEnvelopeDecryptAes_OnIncorrectKey(t *testing.T) {
+	// Want: function does not panic and returns the expected errors
+	_, publicKey, err := RsaKeyPairPem()
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	theWrongPrivateKey, _, err := RsaKeyPairPem()
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	plaintext := "some-pretty-important-plaintext"
+	ciphertext, encSymKey, err := EnvelopeEncryptAes(plaintext, publicKey)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+
+	decryptedCiphertext, err := EnvelopeDecryptAes(ciphertext, encSymKey, theWrongPrivateKey)
+	assert.Equal(t, "", decryptedCiphertext)
+	assert.Contains(t, err.Error(), "DecryptRsa: rsa.DecryptOAEP: [crypto/rsa: decryption error]")
+
+	decryptedCiphertext, err = EnvelopeDecryptAes(ciphertext, encSymKey, "")
+	assert.Equal(t, "", decryptedCiphertext)
+	assert.Contains(t, err.Error(), "failed to parse PEM block into *rsa.PrivateKey")
+}
+
+func TestEnvelopeDecryptAes_PositivePath(t *testing.T) {
+	// Want: encryption works end to end
+	privateKey, publicKey, err := RsaKeyPairPem()
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	plaintext := "some-pretty-important-plaintext"
+	ciphertext, encSymKey, err := EnvelopeEncryptAes(plaintext, publicKey)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	decryptedCiphertext, err := EnvelopeDecryptAes(ciphertext, encSymKey, privateKey)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	assert.Equal(t, plaintext, decryptedCiphertext)
+}
+
 // Generic functions
 //////////////////////////////////////////////////////////////////////////////////
 
