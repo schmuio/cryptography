@@ -17,13 +17,6 @@ import (
 	"hash/crc32"
 )
 
-// Envelope is 
-type Envelope struct {
-	Ciphertext string
-	EncryptedSymmetricKey string
-}
-
-
 // EncryptRsa performs RSA OAEP public key encryption using a key in PEM format
 func EncryptRsa(plainText string, puplicKeyPem string) (string, error) {
 	// Parse the key
