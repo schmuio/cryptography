@@ -7,6 +7,7 @@ import (
 	"crypto/rsa"
 	"crypto/sha256"
 	"crypto/x509"
+	"encoding/base64"
 	"encoding/hex"
 	"encoding/pem"
 	"errors"
@@ -161,7 +162,7 @@ func DecryptRsaGkms(ciphertextHex string, privateKeyName string) (string, error)
 	return plaintText, nil
 }
 
-// RsaKeyPair a pair of RSA keys
+// RsaKeyPair generates a pair of RSA keys
 func RsaKeyPair() (*rsa.PrivateKey, *rsa.PublicKey, error) {
 	privatekey, err := rsa.GenerateKey(rand.Reader, 4096)
 	if err != nil {
@@ -170,7 +171,7 @@ func RsaKeyPair() (*rsa.PrivateKey, *rsa.PublicKey, error) {
 	return privatekey, &privatekey.PublicKey, nil
 }
 
-// RsaKeyPair a pair of RSA keys in PEM format
+// RsaKeyPair generates a pair of RSA keys in PEM format
 func RsaKeyPairPem() (string, string, error) {
 	privateKey, publicKey, err := RsaKeyPair()
 	if err != nil {
@@ -182,6 +183,15 @@ func RsaKeyPairPem() (string, string, error) {
 		return "", "", fmt.Errorf("RsaKeyPairPem failed to convert public key into PEM string with error: [%w]", err)
 	}
 	return privateKeyPem, publicKeyPem, nil
+}
+
+// RsaKeyPairBase64 RsaKeyPair generates a pair of RSA keys in Base64 format
+func RsaKeyPairBase64() (string, string, error) {
+	privateKeyPem, publicKeyPem, err := RsaKeyPairPem()
+	if err != nil {
+		return "", "", fmt.Errorf("RsaKeyPairBase64 failed to generate key pair with error: [%w]", err)
+	}
+	return base64.StdEncoding.EncodeToString([]byte(privateKeyPem)), base64.StdEncoding.EncodeToString([]byte(publicKeyPem)), nil
 }
 
 // RsaPrivateKeyAsPemStr converts an *rsa.PrivateKey into PEM formatted one

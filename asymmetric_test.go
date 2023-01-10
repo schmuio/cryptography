@@ -1,6 +1,7 @@
 package cryptography
 
 import (
+	"encoding/base64"
 	"github.com/stretchr/testify/assert"
 	"os"
 	"reflect"
@@ -404,6 +405,30 @@ func TestRsaKeyPairPem(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 	_, err = RsaPublicKeyFromPemStr(publicKeyPem)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+}
+
+func TestRsaKeyPairBase64(t *testing.T) {
+	// Want: valid bs64-format keys are created
+	privateKeyBs64, publicKeyBs64, err := RsaKeyPairBase64()
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	privateKeyPemBytes, err := base64.StdEncoding.DecodeString(privateKeyBs64)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	publicKeyPemBytes, err := base64.StdEncoding.DecodeString(publicKeyBs64)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	_, err = RsaPrivateKeyFromPemStr(string(privateKeyPemBytes))
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	_, err = RsaPublicKeyFromPemStr(string(publicKeyPemBytes))
 	if err != nil {
 		t.Errorf(err.Error())
 	}
