@@ -30,7 +30,6 @@ func HashPasswordCustom(password string, salt string, time, memory uint32, threa
 	if len(password) < 8 {
 		return "", fmt.Errorf("HashPassword: proposed password with length [%v] is too short", len(password))
 	}
-
 	hash := argon2.IDKey([]byte(password), []byte(salt), time, memory, threads, keyLen)
 	return hex.EncodeToString(hash), nil
 }
