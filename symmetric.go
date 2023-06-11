@@ -12,11 +12,10 @@
 // Note of caution: please do not try to change the internal
 // workings of the functions unless you do know what you are
 // doing. If there is a security concern or a recommendation
-// it would be warmly welcomed and promtly addressed
+// it would be warmly welcomed and promtly addressed.
 package cryptography
 
 import (
-	kms "cloud.google.com/go/kms/apiv1"
 	"context"
 	"crypto/aes"
 	"crypto/cipher"
@@ -26,10 +25,12 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
+	"io"
+
+	kms "cloud.google.com/go/kms/apiv1"
 	chacha "golang.org/x/crypto/chacha20poly1305"
 	kmspb "google.golang.org/genproto/googleapis/cloud/kms/v1"
 	"google.golang.org/protobuf/types/known/wrapperspb"
-	"io"
 )
 
 // EncryptAesGcm peforms AES GCM encryption with an explicitly provided encryption/decryption key (as opposed to a pointer/reference to a key)

@@ -36,12 +36,12 @@ A compilation of reliable lower level implementations wrapped as developer-frien
 <br>
 
 ## Motivation
-In our experience with enterprise software we have repeatedly encountered a gap between the the developers' need to apply cryptographic operations and the supply of safe and in the meantime easy to use cryptoraphic recipes. Yes, all of it is out there, but getting the entire picture together can take weeks, months or years depending on one's inidividual experience. We went through this journey and now would like to share our work. We intend to continue using this library for our present and future proprietary projects.
+In our experience with enterprise software we have repeatedly encountered a gap between the developers' need to apply cryptographic operations and the supply of safe and in the meantime easy to use cryptoraphic recipes. Yes, all of it is out there, but getting the entire picture together can take weeks, months or years depending on one's inidividual experience. We went through this journey and now would like to share our work. We intend to continue using this library for our present and future proprietary projects.
 <br>
 <br>
 
 ## What's in the box
-We have tried to cover a meaningful variety of cryptographic algorithms which are presently considered industry standard. There are functions for symmetric encryption, asymmetric encryption, digital signatures, time based one time passwords and multiple utilities for management of cryptographic keys. One can find both Go native constructs based on the standard crypto library as well as cloud-specific implementations that offer excellent security and key management features. We intend to keep updating the library with additional algorithms and welcome recommendations or feature requests.
+We have tried to cover a meaningful variety of cryptographic algorithms which are presently considered industry standard. There are functions for symmetric encryption, asymmetric encryption, digital signatures, time based one time passwords, parallelization resistant hashing and multiple utilities for management of cryptographic keys. One can find both Go native constructs based on the standard crypto library as well as cloud-specific implementations that offer excellent security and key management features. We intend to keep updating the library with additional algorithms and welcome recommendations or feature requests.
 <br>
 <br>
 
@@ -66,7 +66,7 @@ ciphertext, err := cryptography.EncryptAesGcm("some-important-plaintext", yourKe
 <br>
 
 ## Performance
-We have prioritised developer convenience and ability to inspect inputs and outputs visually so most functions are designed to consume string inputs and to provide string outputs. This means that every now and then there are a few type conversions that in a _be-as-fast-as-possible_ scenario can be avoided. This does not mean the functions are not fast, on the contrary - this overhead has a infinitesimal impact compared to the computational cost of the underlying cryptographic operation. Unless you plan to apply these functions in loops with a very high number of iterations or are in a _the-fastest-takes-it-all_ situation, the performance is more than fine. In other words, if you need to measure performance in milliseconds or hundreds of nanoseconds - you are fine. If a few nanoseconds per operation are an issue - we recommend that you go for lower level implementations.
+We have prioritised developer convenience and ability to inspect inputs and outputs visually so most functions are designed to consume string inputs and to provide string outputs. This means that every now and then there are a few type conversions that in a _be-as-fast-as-possible_ scenario can be avoided. This does not mean the functions are not fast, on the contrary - this overhead has a infinitesimal impact compared to the computational cost of the underlying cryptographic operation. Unless you plan to apply these functions in loops with a very high number of iterations or are in a _the-fastest-takes-it-all_ situation, the performance is more than fine. In other words, if you need to measure performance in microseconds or hundreds of nanoseconds - you are fine. If a few nanoseconds per operation are an issue - we recommend that you go for lower level implementations.
 <br>
 <br>
 
@@ -277,6 +277,8 @@ For our purposes we prefer to use SHA256, however we do not argue that the SHA1 
 - ECDSA p256/p384/secp256k1 >> digital signatures >> via Google Cloud Platform
 
 - RFC 6238 >> time-based one-time passwords >> native
+
+- Argon2 >> ASIC resistant key derivation and hashing >> native
 <br>
 
 *<i>native</i> refers to as locally executable code which does not rely on any external infrastructure
