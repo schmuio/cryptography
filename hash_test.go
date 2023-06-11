@@ -17,7 +17,7 @@ func Test_HashPassword(t *testing.T) {
 	}
 	assert.Equal(t, 64, len(hash))
 
-	hash, err = HashPassword("1234567", salt)
+	_, err = HashPassword("1234567", salt)
 	if err == nil {
 		t.Fatal("should have raised an error on too short password")
 	}
@@ -35,7 +35,7 @@ func Test_HashPasswordCustom(t *testing.T) {
 	}
 	assert.Equal(t, 64, len(hash))
 
-	hash, err = HashPasswordCustom("1234567", salt, 1, 1*64*1024, 2, 32)
+	_, err = HashPasswordCustom("1234567", salt, 1, 1*64*1024, 2, 32)
 	if err == nil {
 		t.Fatal("should have raised an error on too short password")
 	}
