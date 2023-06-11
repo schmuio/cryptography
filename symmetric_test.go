@@ -7,7 +7,7 @@ import (
 )
 
 // AEAD - AES GCM - native
-//////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////
 func TestEncryptAesGcm_OnFaultyKey(t *testing.T) {
 	// Want: consistent rejection in case of empty or incorrect-length keys
 	for _, faultyKey := range []string{"", "odd", "3f07fb18", "ef65a7ac36a5d6c56cd6cd63e8683b9e5f3c8cbdf27650afc257285f75d4bf38209a899dee8348ddb8d49cf00a26f2118fd479b2ae10c8397b4cf52bce342bf3"} {
@@ -131,7 +131,7 @@ func TestDecryptAesGcm_PositivePath(t *testing.T) {
 }
 
 // AEAD - ChaCha20-Poly1305 - native
-//////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////
 func Test_EncryptChaCha20_OnFaultyKey(t *testing.T) {
 	// Want: consistent rejection in case of empty or incorrect-length keys
 	for _, faultyKey := range []string{"", "odd", "3f07fb18", "ef65a7ac36a5d6c56cd6cd63e8683b9e5f3c8cbdf27650afc257285f75d4bf38209a899dee8348ddb8d49cf00a26f2118fd479b2ae10c8397b4cf52bce342bf3"} {
@@ -241,7 +241,7 @@ func Test_DecryptChaCha20_PositivePath(t *testing.T) {
 }
 
 // AEAD with Google Cloud Platform KMS
-//////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////
 func Test_EncryptAeadGkms_PositivePath(t *testing.T) {
 	// Escape hatch if there is need to operate off-line or in environments that cannot be connected to GCP
 	if os.Getenv("DISABLE_GCP_TESTS") == "1" {
@@ -300,7 +300,7 @@ func Test_DecryptAeadGkms_PositivePath(t *testing.T) {
 }
 
 // Generic functions
-//////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////
 func Test_Key128b(t *testing.T) {
 	// Want: the function generates a 256-bit key
 	key, err := Key128b()

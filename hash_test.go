@@ -8,6 +8,9 @@ import (
 
 func Test_HashPassword(t *testing.T) {
 	salt, err := RandomHex(32)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
 	hash, err := HashPassword("some-password", salt)
 	if err != nil {
 		t.Fatal(err.Error())
@@ -23,6 +26,9 @@ func Test_HashPassword(t *testing.T) {
 
 func Test_HashPasswordCustom(t *testing.T) {
 	salt, err := RandomHex(32)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
 	hash, err := HashPasswordCustom("some-password", salt, 1, 1*64*1024, 2, 32)
 	if err != nil {
 		t.Fatal(err.Error())
