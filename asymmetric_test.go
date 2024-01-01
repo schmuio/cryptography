@@ -2,10 +2,11 @@ package cryptography
 
 import (
 	"encoding/base64"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // RSA OAEP - native
@@ -37,7 +38,7 @@ func Test_EncryptRsa_TooLongInput(t *testing.T) {
 
 	ciphertext, err := EncryptRsa(tooLongPlaintext, publicKeyPem)
 	assert.Equal(t, "", ciphertext)
-	assert.Contains(t, err.Error(), "encryptRsa: rsa.EncryptOAEP: [crypto/rsa: message too long for RSA public key size]")
+	assert.Contains(t, err.Error(), "encryptRsa: rsa.EncryptOAEP: [crypto/rsa: message too long for RSA key size]")
 }
 
 func Test_EncryptRsa_PositivePath(t *testing.T) {
@@ -77,7 +78,7 @@ func Test_encryptRsa_TooLongInput(t *testing.T) {
 
 	ciphertext, err := encryptRsa(tooLongPlaintext, publicKey)
 	assert.Equal(t, "", ciphertext)
-	assert.Contains(t, err.Error(), "rsa.EncryptOAEP: [crypto/rsa: message too long for RSA public key size]")
+	assert.Contains(t, err.Error(), "rsa.EncryptOAEP: [crypto/rsa: message too long for RSA key size]")
 }
 
 func Test_encryptRsa_PositivePath(t *testing.T) {
